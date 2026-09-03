@@ -1,29 +1,30 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 
-// SVG Logo components styled inline for responsiveness and colors
+// SVG Logo components
 const JSLogo = () => (
-  <svg viewBox="0 0 24 24" className="w-8 h-8 rounded-md" fill="#F7DF1E">
+  <svg viewBox="0 0 24 24" className="w-7 h-7 rounded" fill="#F7DF1E">
     <rect width="24" height="24" rx="4" />
     <text x="18" y="19" fill="#000" fontSize="10" fontWeight="900" textAnchor="end">JS</text>
   </svg>
 );
 
 const TSLogo = () => (
-  <svg viewBox="0 0 24 24" className="w-8 h-8 rounded-md" fill="#3178C6">
+  <svg viewBox="0 0 24 24" className="w-7 h-7 rounded" fill="#3178C6">
     <rect width="24" height="24" rx="4" />
     <text x="18" y="19" fill="#fff" fontSize="10" fontWeight="900" textAnchor="end">TS</text>
   </svg>
 );
 
 const PythonLogo = () => (
-  <svg viewBox="0 0 448 512" className="w-8 h-8 fill-[#3776AB]">
-    <path d="M439.4 153c-.5-1.1-1.1-2.2-1.8-3.1-10-13-33-22.3-64.6-22.3h-44.2v-44.3c0-31.6-9.3-54.6-22.3-64.6-10-7.7-22-11.8-35.3-11.8h-110c-13.3 0-25.3 4-35.3 11.8-13 10-22.3 33-22.3 64.6v22.2H64.6C33 105.7 10 115 0 128c-7.7 10-11.8 22-11.8 35.3v110c0 13.3 4 25.3 11.8 35.3 10 13 33 22.3 64.6 22.3h44.2V375c0 31.6 9.3 54.6 22.3 64.6 10 7.7 22 11.8 35.3 11.8h110c13.3 0 25.3-4 35.3-11.8 13-10 22.3-33 22.3-64.6v-22.2h39.7c31.6 0 54.6-9.3 64.6-22.3 7.7-10 11.8-22 11.8-35.3V188.3c0-13.3-4.1-25.3-11.8-35.3zM250 82.5c8.3 0 15 6.7 15 15s-6.7 15-15 15-15-6.7-15-15 6.7-15 15-15zm-83.3 317c-8.3 0-15-6.7-15-15s6.7-15 15-15 15 6.7 15 15-6.7 15-15 15z" />
+  <svg viewBox="0 0 24 24" className="w-7 h-7" fill="#3776AB">
+    <circle cx="12" cy="12" r="10" fillOpacity="0.2" />
+    <text x="12" y="16" fill="#3776AB" fontSize="9" fontWeight="800" textAnchor="middle">Py</text>
   </svg>
 );
 
 const ReactLogo = () => (
-  <svg viewBox="0 0 24 24" className="w-8 h-8 fill-none stroke-[#61DAFB] animate-[spin_20s_linear_infinite]" strokeWidth="2">
+  <svg viewBox="0 0 24 24" className="w-7 h-7 fill-none stroke-[#61DAFB]" strokeWidth="1.5">
     <ellipse cx="12" cy="12" rx="10" ry="4.5" />
     <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(60 12 12)" />
     <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(120 12 12)" />
@@ -32,233 +33,158 @@ const ReactLogo = () => (
 );
 
 const NextLogo = () => (
-  <svg viewBox="0 0 24 24" className="w-8 h-8 fill-white stroke-white" strokeWidth="0.5">
-    <circle cx="12" cy="12" r="11" fill="black" />
-    <path d="M16.5 17.5L8.5 7.5v9h-1.5v-12h1.5l8 10v-10h1.5v13z" fill="white" />
+  <svg viewBox="0 0 24 24" className="w-7 h-7">
+    <circle cx="12" cy="12" r="11" fill="white" />
+    <path d="M16.5 17.5L8.5 7.5v9h-1.5v-12h1.5l8 10v-10h1.5v13z" fill="black" />
   </svg>
 );
 
 const SQLLogo = () => (
-  <svg viewBox="0 0 24 24" className="w-8 h-8 fill-none stroke-[#336791]" strokeWidth="2">
-    <ellipse cx="12" cy="5" rx="9" ry="3" fill="#336791" fillOpacity="0.2" />
+  <svg viewBox="0 0 24 24" className="w-7 h-7 fill-none stroke-[#336791]" strokeWidth="1.5">
+    <ellipse cx="12" cy="5" rx="9" ry="3" fill="#336791" fillOpacity="0.3" />
     <path d="M3 5v6c0 1.66 4 3 9 3s9-1.34 9-3V5" />
     <path d="M3 11v6c0 1.66 4 3 9 3s9-1.34 9-3v-6" />
   </svg>
 );
 
 const HTMLLogo = () => (
-  <svg viewBox="0 0 24 24" className="w-8 h-8 fill-[#E34F26]">
+  <svg viewBox="0 0 24 24" className="w-7 h-7 fill-[#E34F26]">
     <path d="M1.5 0h21l-1.9 21.2L12 24l-8.6-2.8L1.5 0zm15.1 6.5H7.1l.3 3h9.1l-.6 6.5-3.9 1.3-3.9-1.3-.2-2.5h-3l.5 5.5 6.6 2.2 6.6-2.2.8-9h-9.9l-.3-3h11.2l-.2-2.5z" />
   </svg>
 );
 
 const TailwindLogo = () => (
-  <svg viewBox="0 0 24 24" className="w-8 h-8 fill-[#38BDF8]">
-    <path d="M12 6.002C12.002 6 15 2 19 2s5 3.5 5 7.5-3.5 6.5-7.5 6.5c-3.4 0-5.5-2.2-6.5-3.7-1 1.5-3.1 3.7-6.5 3.7C3.5 16 0 13 0 9s3.5-7.5 7.5-7.5c4 0 4.498 4 4.5 4.002z" />
+  <svg viewBox="0 0 54 33" className="w-7 h-5 fill-[#38BDF8]">
+    <path d="M27 0c-7.2 0-11.7 3.6-13.5 10.8 2.7-3.6 5.85-4.95 9.45-4.05 2.054.514 3.522 2.004 5.147 3.653C30.744 13.09 33.808 16.2 40.5 16.2c7.2 0 11.7-3.6 13.5-10.8-2.7 3.6-5.85 4.95-9.45 4.05-2.054-.514-3.522-2.004-5.147-3.653C36.756 3.11 33.692 0 27 0zM13.5 16.2C6.3 16.2 1.8 19.8 0 27c2.7-3.6 5.85-4.95 9.45-4.05 2.054.514 3.522 2.004 5.147 3.653C17.244 29.29 20.308 32.4 27 32.4c7.2 0 11.7-3.6 13.5-10.8-2.7 3.6-5.85 4.95-9.45 4.05-2.054-.514-3.522-2.004-5.147-3.653C23.256 19.31 20.192 16.2 13.5 16.2z" />
   </svg>
 );
 
 const GraphQLLogo = () => (
-  <svg viewBox="0 0 24 24" className="w-8 h-8 stroke-[#E10098] fill-none animate-[pulse_3s_ease-in-out_infinite]" strokeWidth="2">
+  <svg viewBox="0 0 24 24" className="w-7 h-7 stroke-[#E10098] fill-none" strokeWidth="1.5">
     <polygon points="12,2 20,7 20,17 12,22 4,17 4,7" />
-    <line x1="12" y1="2" x2="12" y2="22" />
-    <line x1="4" y1="7" x2="20" y2="17" />
-    <line x1="20" y1="7" x2="4" y2="17" />
-    <circle cx="12" cy="2" r="1.5" fill="#E10098" />
-    <circle cx="20" cy="7" r="1.5" fill="#E10098" />
-    <circle cx="20" cy="17" r="1.5" fill="#E10098" />
-    <circle cx="12" cy="22" r="1.5" fill="#E10098" />
-    <circle cx="4" cy="17" r="1.5" fill="#E10098" />
-    <circle cx="4" cy="7" r="1.5" fill="#E10098" />
-    <circle cx="12" cy="12" r="2.5" fill="#E10098" />
+    <circle cx="12" cy="12" r="2" fill="#E10098" />
   </svg>
 );
 
 const LangChainLogo = () => (
-  <svg viewBox="0 0 24 24" className="w-8 h-8 fill-none stroke-[#13EF95]" strokeWidth="2" strokeLinecap="round">
-    <rect x="3" y="11" width="10" height="6" rx="3" transform="rotate(-45 8 14)" />
-    <rect x="11" y="7" width="10" height="6" rx="3" transform="rotate(-45 16 10)" />
+  <svg viewBox="0 0 24 24" className="w-7 h-7 fill-none stroke-[#13EF95]" strokeWidth="1.5" strokeLinecap="round">
     <path d="M12 4c2.5 0 4.5 2 4.5 4.5S14.5 13 12 13s-4.5-2-4.5-4.5S9.5 4 12 4z" fill="#13EF95" fillOpacity="0.2" />
+    <circle cx="12" cy="12" r="8" />
   </svg>
 );
 
 const LangGraphLogo = () => (
-  <svg viewBox="0 0 24 24" className="w-8 h-8 fill-none stroke-[#FF5A5F]" strokeWidth="2">
-    <circle cx="6" cy="18" r="3" fill="#FF5A5F" />
-    <circle cx="18" cy="6" r="3" fill="#FF5A5F" />
-    <circle cx="12" cy="10" r="3" fill="#FF5A5F" />
+  <svg viewBox="0 0 24 24" className="w-7 h-7 fill-none stroke-[#FF5A5F]" strokeWidth="1.5">
+    <circle cx="6" cy="18" r="2.5" fill="#FF5A5F" />
+    <circle cx="18" cy="6" r="2.5" fill="#FF5A5F" />
+    <circle cx="12" cy="10" r="2.5" fill="#FF5A5F" />
     <line x1="6" y1="18" x2="12" y2="10" />
     <line x1="12" y1="10" x2="18" y2="6" />
-    <path d="M6 18c6-2 6-8 12-12" strokeDasharray="3 3" />
   </svg>
 );
 
 const LLMLogo = () => (
-  <svg viewBox="0 0 24 24" className="w-8 h-8 fill-none stroke-[#A855F7]" strokeWidth="2">
-    <path d="M12 2v20M2 12h20M12 2c5.5 0 10 4.5 10 10s-4.5 10-10 10S2 17.5 2 12 6.5 2 12 2z" strokeOpacity="0.3" />
-    <path d="M9.5 9.5l2.5-2.5 2.5 2.5-2.5 2.5z" fill="#A855F7" fillOpacity="0.2" />
-    <circle cx="12" cy="12" r="5" fill="#A855F7" fillOpacity="0.4" />
+  <svg viewBox="0 0 24 24" className="w-7 h-7 fill-none stroke-[#A855F7]" strokeWidth="1.5">
+    <circle cx="12" cy="12" r="5" fill="#A855F7" fillOpacity="0.3" />
     <path d="M12 7v10M7 12h10" />
+    <circle cx="12" cy="12" r="9" strokeOpacity="0.3" />
   </svg>
 );
 
+const categories = ['All', 'Languages', 'Frameworks', 'Tools', 'AI / ML'] as const;
+
 const skillsData = [
-  {
-    name: 'JavaScript',
-    note: 'ES6+ · Async / Await',
-    logo: JSLogo,
-    glowColor: 'rgba(247, 223, 30, 0.15)',
-  },
-  {
-    name: 'TypeScript',
-    note: 'Strict Types · Interfaces',
-    logo: TSLogo,
-    glowColor: 'rgba(49, 120, 198, 0.15)',
-  },
-  {
-    name: 'Python',
-    note: 'Concurrency · Scripts',
-    logo: PythonLogo,
-    glowColor: 'rgba(55, 118, 171, 0.15)',
-  },
-  {
-    name: 'React',
-    note: 'Hooks · State Management',
-    logo: ReactLogo,
-    glowColor: 'rgba(97, 218, 251, 0.15)',
-  },
-  {
-    name: 'Next.js',
-    note: 'App Router · SSR / SSG',
-    logo: NextLogo,
-    glowColor: 'rgba(255, 255, 255, 0.12)',
-  },
-  {
-    name: 'GraphQL',
-    note: 'Schemas · Client / Server APIs',
-    logo: GraphQLLogo,
-    glowColor: 'rgba(225, 0, 152, 0.15)',
-  },
-  {
-    name: 'SQL & Database',
-    note: 'PostgreSQL · Queries',
-    logo: SQLLogo,
-    glowColor: 'rgba(51, 103, 145, 0.15)',
-  },
-  {
-    name: 'HTML & CSS',
-    note: 'Flex & Grid Layouts',
-    logo: HTMLLogo,
-    glowColor: 'rgba(227, 79, 38, 0.15)',
-  },
-  {
-    name: 'Tailwind CSS',
-    note: 'Responsive utility styling',
-    logo: TailwindLogo,
-    glowColor: 'rgba(56, 189, 248, 0.15)',
-  },
-  {
-    name: 'LangChain',
-    note: 'AI agent workflows · Chains',
-    logo: LangChainLogo,
-    glowColor: 'rgba(19, 239, 149, 0.15)',
-  },
-  {
-    name: 'LangGraph',
-    note: 'Multi-agent graph systems',
-    logo: LangGraphLogo,
-    glowColor: 'rgba(255, 90, 95, 0.15)',
-  },
-  {
-    name: 'LLM Integration',
-    note: 'OpenAI, Claude, Llama · RAG',
-    logo: LLMLogo,
-    glowColor: 'rgba(168, 85, 247, 0.15)',
-  },
+  { name: 'JavaScript', note: 'ES6+ · Async / Await', logo: JSLogo, category: 'Languages' as const },
+  { name: 'TypeScript', note: 'Strict Types · Interfaces', logo: TSLogo, category: 'Languages' as const },
+  { name: 'Python', note: 'Concurrency · Scripts', logo: PythonLogo, category: 'Languages' as const },
+  { name: 'React', note: 'Hooks · State Management', logo: ReactLogo, category: 'Frameworks' as const },
+  { name: 'Next.js', note: 'App Router · SSR / SSG', logo: NextLogo, category: 'Frameworks' as const },
+  { name: 'GraphQL', note: 'Schemas · Client / Server', logo: GraphQLLogo, category: 'Tools' as const },
+  { name: 'SQL & Database', note: 'PostgreSQL · Queries', logo: SQLLogo, category: 'Tools' as const },
+  { name: 'HTML & CSS', note: 'Flex & Grid Layouts', logo: HTMLLogo, category: 'Languages' as const },
+  { name: 'Tailwind CSS', note: 'Responsive utility styling', logo: TailwindLogo, category: 'Frameworks' as const },
+  { name: 'LangChain', note: 'AI agent workflows · Chains', logo: LangChainLogo, category: 'AI / ML' as const },
+  { name: 'LangGraph', note: 'Multi-agent graph systems', logo: LangGraphLogo, category: 'AI / ML' as const },
+  { name: 'LLM Integration', note: 'OpenAI, Claude, Llama · RAG', logo: LLMLogo, category: 'AI / ML' as const },
 ];
 
 export default function Skills() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const [activeCategory, setActiveCategory] = useState<typeof categories[number]>('All');
+
+  const filteredSkills = activeCategory === 'All'
+    ? skillsData
+    : skillsData.filter((s) => s.category === activeCategory);
 
   return (
-    <section id="skills" className="relative z-10 py-24 md:py-32 px-6" ref={ref}>
-      <div className="max-w-6xl mx-auto">
-        {/* Giant Section Title */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="w-full select-none pointer-events-none overflow-hidden mb-12 sm:mb-16"
+    <section id="skills" className="relative z-10 py-24 md:py-32 px-6 sm:px-10 lg:px-10" ref={ref}>
+      <div className="max-w-6xl">
+        {/* Section Number */}
+        <motion.span
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.5 }}
+          className="section-label block mb-8"
         >
-          <h2 className="text-[12vw] font-black tracking-tighter text-white/10 uppercase leading-none">
-            SKILLS
-          </h2>
+          03 | Tech Stack
+        </motion.span>
+
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          className="mb-10"
+        >
+          <h3 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-[1.1] mb-3">
+            Core Stack & Capabilities
+          </h3>
+          <p className="text-base text-white/35 font-light leading-relaxed max-w-xl">
+            The languages, frameworks, and tools I use to build scalable, high-performance systems.
+          </p>
         </motion.div>
 
-        {/* Section Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16 md:mb-24">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-6"
-          >
-            <h3 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white font-sans leading-[1.15]">
-              Core Tech Stack <br className="hidden sm:block" /> & Capabilities
-            </h3>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-6 flex items-end"
-          >
-            <p className="text-base sm:text-lg text-neutral-400 font-light leading-relaxed max-w-xl font-sans">
-              The core languages, frameworks, and tools I utilize to build interactive, scalable, and high-performance digital systems.
-            </p>
-          </motion.div>
-        </div>
+        {/* Category Filter Tabs */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="flex flex-wrap gap-2 mb-10"
+        >
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={`px-4 py-2 rounded-full text-xs font-medium transition-all duration-300 cursor-pointer ${
+                activeCategory === cat
+                  ? 'bg-[#D4FF00] text-black'
+                  : 'bg-white/[0.04] text-white/40 border border-white/[0.06] hover:text-white/60 hover:bg-white/[0.06]'
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </motion.div>
 
-        {/* Skills Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {skillsData.map((skill, index) => {
+        {/* Skills Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          {filteredSkills.map((skill, index) => {
             const Logo = skill.logo;
             return (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 25 }}
+                key={skill.name}
+                initial={{ opacity: 0, y: 15 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{
-                  duration: 0.6,
-                  delay: index * 0.05,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-                className="group relative rounded-2xl p-6 bg-white/[0.02] backdrop-blur-md border border-white/[0.05] hover:border-white/[0.12] hover:bg-white/[0.04] transition-all duration-500 flex items-center gap-4 cursor-default overflow-hidden"
-                style={{
-                  // Dynamic subtle glow on group hover using CSS variable
-                  '--glow-color': skill.glowColor,
-                } as React.CSSProperties}
+                transition={{ duration: 0.5, delay: 0.15 + index * 0.03 }}
+                className="group relative rounded-xl p-4 bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.1] hover:bg-white/[0.04] transition-all duration-400 flex items-center gap-3.5 cursor-default"
               >
-                {/* Glow Background effect on hover */}
-                <div 
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                  style={{
-                    background: `radial-gradient(circle 100px at center, ${skill.glowColor}, transparent)`,
-                  }}
-                />
-
-                {/* Left Side: Logo */}
-                <div className="relative z-10 shrink-0 group-hover:scale-110 transition-transform duration-500">
+                <div className="shrink-0 group-hover:scale-110 transition-transform duration-400">
                   <Logo />
                 </div>
-
-                {/* Right Side: Details */}
-                <div className="relative z-10 min-w-0">
-                  <h3 className="text-base font-semibold text-white group-hover:text-white transition-colors">
-                    {skill.name}
-                  </h3>
-                  <p className="text-xs text-white/40 group-hover:text-white/60 transition-colors mt-0.5 font-light truncate">
+                <div className="min-w-0">
+                  <h4 className="text-sm font-semibold text-white">{skill.name}</h4>
+                  <p className="text-[11px] text-white/30 group-hover:text-white/45 transition-colors mt-0.5 truncate">
                     {skill.note}
                   </p>
                 </div>

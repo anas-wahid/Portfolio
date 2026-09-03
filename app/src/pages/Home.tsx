@@ -1,29 +1,37 @@
-import StarfieldScene from '@/components/StarfieldScene';
-import Navigation from '@/components/Navigation';
+import { useState } from 'react';
+import Sidebar from '@/components/Sidebar';
+import CommandPalette from '@/components/CommandPalette';
 import Hero from '@/sections/Hero';
 import About from '@/sections/About';
 import Skills from '@/sections/Skills';
 import Projects from '@/sections/Projects';
-import Services from '@/sections/Services';
 import FAQ from '@/sections/FAQ';
+import Contact from '@/sections/Contact';
 import Footer from '@/components/Footer';
-import ChatWidget from '@/components/ChatWidget';
+import CursorGlow from '@/components/CursorGlow';
 
 export default function Home() {
+  const [cmdPaletteOpen, setCmdPaletteOpen] = useState(false);
+
   return (
-    <div className="relative min-h-screen bg-background">
-      <StarfieldScene />
-      <Navigation />
-      <main className="relative z-10">
+    <div className="relative min-h-screen bg-[#0B0C0E]">
+      <CursorGlow />
+      <Sidebar onOpenCommandPalette={() => setCmdPaletteOpen(true)} />
+      <CommandPalette open={cmdPaletteOpen} onOpenChange={setCmdPaletteOpen} />
+
+      <main className="main-content relative z-10">
+        {/* Mobile top padding for fixed header */}
+        <div className="lg:hidden h-14" />
+
         <Hero />
         <About />
         <Skills />
         <Projects />
-        <Services />
         <FAQ />
+        <Contact />
+        <Footer />
       </main>
-      <Footer />
-      <ChatWidget />
+
     </div>
   );
 }

@@ -1,7 +1,14 @@
 import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+import { ArrowUpRight, Sparkles, Trophy, Rocket, Star } from 'lucide-react';
 import { useBooking } from '@/providers/BookingProvider';
+
+const trustBadges = [
+  { icon: Star, label: 'Top Rated' },
+  { icon: Trophy, label: 'Award Winning' },
+  { icon: Rocket, label: '50+ Shipped' },
+  { icon: Sparkles, label: 'Premium Quality' },
+];
 
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -11,10 +18,8 @@ export default function Hero() {
     const handleScroll = () => {
       if (!heroRef.current) return;
       const scrollY = window.scrollY;
-      const opacity = Math.max(0, 1 - scrollY / 700);
-      const translateY = scrollY * 0.4;
+      const opacity = Math.max(0, 1 - scrollY / 900);
       heroRef.current.style.opacity = String(opacity);
-      heroRef.current.style.transform = `translateY(${translateY}px)`;
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -24,82 +29,124 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden pt-28 md:pt-36 pb-16 px-6"
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden px-6 sm:px-10 lg:px-10 py-20"
     >
-      <div ref={heroRef} className="relative z-10 text-center max-w-6xl mx-auto my-auto">
+      <div ref={heroRef} className="relative z-10 max-w-6xl">
+        {/* Top metadata row */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-10"
+        >
+          <span className="section-label">
+            01 | Full-Stack & AI Engineer
+          </span>
+          <div className="flex items-center gap-6">
+            <div className="text-right">
+              <div className="text-xl sm:text-2xl font-bold text-white">5+</div>
+              <div className="text-[10px] tracking-wider uppercase text-white/30 font-medium">Years</div>
+            </div>
+            <div className="w-px h-8 bg-white/10" />
+            <div className="text-right">
+              <div className="text-xl sm:text-2xl font-bold text-white">50+</div>
+              <div className="text-[10px] tracking-wider uppercase text-white/30 font-medium">Projects</div>
+            </div>
+          </div>
+        </motion.div>
+
         {/* Main Heading */}
         <motion.h1
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-4xl sm:text-6xl md:text-7xl lg:text-[7vw] font-black tracking-tighter uppercase leading-[0.92] text-white mb-8 sm:mb-10 select-none"
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05] text-white mb-6 select-none"
         >
-          <span className="block">Building Digital</span>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 block">
-            Experiences
-          </span>
-          <span className="block">That Matter</span>
+          Building Digital{' '}
+          <span className="text-[#D4FF00]">Experiences</span>{' '}
+          That Matter.
         </motion.h1>
 
-        {/* CTA Buttons */}
-        <motion.div
+        {/* Subtitle */}
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          transition={{ duration: 0.6, delay: 0.35 }}
+          className="text-base sm:text-lg text-white/45 font-light leading-relaxed max-w-2xl mb-8"
+        >
+          Full-stack developer crafting SaaS platforms, AI tools, interactive web experiences,
+          and scalable systems — from concept to production.
+        </motion.p>
+
+        {/* Feature Bullets */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.45 }}
+          className="flex flex-col gap-3 mb-10"
+        >
+          {[
+            { title: 'Beyond the build', desc: 'I plan for scalability so your stack holds up as usage grows.' },
+            { title: 'Built to engage', desc: 'Products shaped to attract users and keep them coming back.' },
+          ].map((item, i) => (
+            <div key={i} className="flex items-start gap-3">
+              <div className="w-1.5 h-1.5 rounded-full bg-[#D4FF00] mt-2 shrink-0" />
+              <div>
+                <span className="text-sm font-semibold text-white">{item.title}</span>
+                <span className="text-sm text-white/35 ml-1">— {item.desc}</span>
+              </div>
+            </div>
+          ))}
+        </motion.div>
+
+        {/* Trust Badges */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.55 }}
+          className="flex flex-wrap gap-3 mb-10"
+        >
+          {trustBadges.map((badge, i) => (
+            <div
+              key={i}
+              className="flex items-center gap-2 px-3 py-2 rounded-lg bg-white/[0.03] border border-white/[0.06] text-white/50 text-xs font-medium"
+            >
+              <badge.icon className="w-3.5 h-3.5 text-[#D4FF00]" />
+              {badge.label}
+            </div>
+          ))}
+        </motion.div>
+
+        {/* CTAs */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.65 }}
+          className="flex flex-col sm:flex-row gap-3"
         >
           <a
             href="#projects"
-            className="px-8 py-4 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-full text-white font-semibold text-lg hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 hover:scale-105"
+            onClick={(e) => {
+              e.preventDefault();
+              document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[#D4FF00] text-black font-semibold text-sm rounded-full hover:brightness-110 transition-all duration-300 hover:scale-[1.02]"
           >
-            View My Work
+            View work
+            <ArrowUpRight className="w-4 h-4" />
           </a>
           <a
             href="#contact"
             onClick={(e) => {
               e.preventDefault();
-              openBooking();
+              document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="px-8 py-4 glass rounded-full text-white font-semibold text-lg hover:bg-white/10 transition-all duration-300 hover:scale-105 cursor-pointer"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/[0.1] text-white/70 font-medium text-sm hover:text-white hover:border-white/20 hover:bg-white/[0.03] transition-all duration-300 cursor-pointer"
           >
-            Get in Touch
+            Get in touch
           </a>
         </motion.div>
-
-        {/* Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.6 }}
-          className="mt-12 sm:mt-16 grid grid-cols-3 gap-6 sm:gap-8 max-w-lg mx-auto"
-        >
-          {[
-            { value: '5+', label: 'Years Exp.' },
-            { value: '50+', label: 'Projects' },
-            { value: '30+', label: 'Clients' },
-          ].map((stat, i) => (
-            <div key={i} className="text-center">
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white">{stat.value}</div>
-              <div className="text-xs sm:text-sm text-gray-500 mt-1">{stat.label}</div>
-            </div>
-          ))}
-        </motion.div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 pointer-events-none hidden sm:block"
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <ChevronDown className="w-6 h-6 text-gray-500" />
-        </motion.div>
-      </motion.div>
     </section>
   );
 }

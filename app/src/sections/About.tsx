@@ -1,131 +1,174 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Code2, Palette, Zap, Globe, Sparkles, MapPin } from 'lucide-react';
+import { Bot, Braces, Cpu, Layers } from 'lucide-react';
 
-const highlights = [
-  { icon: Code2, label: 'Full Stack', desc: 'End-to-end development' },
-  { icon: Palette, label: 'UI/UX Design', desc: 'Pixel-perfect interfaces' },
-  { icon: Zap, label: 'Performance', desc: 'Optimized & scalable' },
-  { icon: Globe, label: 'Global Remote', desc: 'Seamless collaboration' },
+/* ── Data ── */
+const techStack = [
+  'React',
+  'Next.js',
+  'TypeScript',
+  'Node.js',
+  'Python',
+  'PostgreSQL',
+  'LangChain',
+  'OpenAI',
+  'Tailwind',
+  'Docker',
+  'AWS',
+  'Redis',
 ];
 
+const services = [
+  {
+    icon: Braces,
+    title: 'Full-Stack Dev',
+    desc: 'End-to-end web apps with modern frameworks & clean architecture',
+  },
+  {
+    icon: Bot,
+    title: 'AI Agents',
+    desc: 'Autonomous agents & intelligent workflows for complex tasks',
+  },
+  {
+    icon: Cpu,
+    title: 'AI Applications',
+    desc: 'Smart products integrating LLMs, RAG pipelines & ML models',
+  },
+  {
+    icon: Layers,
+    title: 'Scalable Systems',
+    desc: 'Architecture designed to grow — from MVP to millions of users',
+  },
+];
+
+/* ── Component ── */
 export default function About() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section id="about" className="relative z-10 py-24 md:py-32 px-6 overflow-hidden" ref={ref}>
-      <div className="max-w-6xl mx-auto">
-        {/* Giant Section Title */}
-        {/* <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="w-full select-none pointer-events-none overflow-hidden mb-12 sm:mb-16"
+    <section
+      id="about"
+      className="relative z-10 py-24 md:py-32 px-6 sm:px-10 lg:px-10 overflow-hidden"
+      ref={ref}
+    >
+      {/* Ambient glow */}
+      <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#D4FF00]/[0.02] rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="max-w-6xl">
+        {/* Section label */}
+        <motion.span
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.5 }}
+          className="section-label block mb-12"
         >
-          <h2 className="text-[12vw] font-black tracking-tighter text-white/10 uppercase leading-none">
-            ABOUT
+          02 | About Me
+        </motion.span>
+
+        {/* Name & Title */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mb-10"
+        >
+          <h2 className="text-4xl sm:text-5xl font-bold text-white tracking-tight mb-3">
+            Muhammad Anas
           </h2>
-        </motion.div> */}
+          <p className="text-base sm:text-lg font-medium text-[#D4FF00]/80">
+            Full-Stack &amp; AI Engineer
+          </p>
+        </motion.div>
 
-        {/* Section Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16 md:mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-6"
-          >
-            <h3 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white font-sans leading-[1.15]">
-              Crafting Unique <br className="hidden sm:block" /> Digital Products
-            </h3>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-6 flex items-end"
-          >
-            <p className="text-base sm:text-lg text-neutral-400 font-light leading-relaxed max-w-xl font-sans">
-              I blend technical architecture with sleek modern aesthetics to create premium web applications that engage users and scale effortlessly.
-            </p>
-          </motion.div>
-        </div>
+        {/* Bio Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.15 }}
+          className="rounded-2xl bg-white/[0.02] border border-white/[0.06] p-8 relative overflow-hidden mb-5"
+        >
+          {/* Top gradient line */}
+          <div className="absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-[#D4FF00]/20 to-transparent" />
 
-        {/* Sleek Modern Bento Grid Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          {/* Left Bento Card: Compact Profile */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-4 rounded-3xl glass p-6 sm:p-8 flex flex-col justify-between border border-white/10 relative overflow-hidden group shadow-2xl"
-          >
-            <div className="absolute top-0 right-0 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl pointer-events-none" />
-
-            <div className="space-y-6">
-              {/* Compact Stylish Portrait Square */}
-              <div className="relative w-48 sm:w-56 mx-auto aspect-square rounded-2xl overflow-hidden border border-white/15 shadow-lg group-hover:scale-[1.02] transition-transform duration-500">
-                <img
-                  src="/images/about-portrait.jpg"
-                  alt="Muhammad Anas"
-                  className="w-full h-full object-cover object-top"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-              </div>
-
-              <div className="text-center space-y-1">
-                <h4 className="text-2xl font-bold text-white tracking-tight">Muhammad Anas</h4>
-                <p className="text-sm font-medium text-purple-400">Full-Stack Engineer & Designer</p>
-              </div>
-            </div>
-
-            <div className="pt-6 mt-6 border-t border-white/10 flex items-center justify-between text-xs text-neutral-400">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/80">
-                <MapPin className="w-3.5 h-3.5 text-cyan-400" /> Global Remote
+          <p className="text-base sm:text-lg text-white/55 font-light leading-[1.8] relative">
+            <span className="text-4xl text-[#D4FF00]/20 font-serif leading-none absolute -top-2 -left-1">
+              &ldquo;
+            </span>
+            <span className="pl-5">
+              I&apos;m a Full-Stack Developer with{' '}
+              <span className="text-white font-medium">2+ years</span> of
+              hands-on experience building modern web applications and{' '}
+              <span className="text-[#D4FF00]/80 font-medium">
+                AI-powered solutions
               </span>
-              <span className="inline-flex items-center gap-1 text-emerald-400 font-medium">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" /> Available
+              . I specialize in crafting intelligent AI agents, autonomous
+              workflows, and scalable full-stack platforms — turning complex
+              ideas into{' '}
+              <span className="text-white font-medium">
+                polished, production-ready products
               </span>
-            </div>
-          </motion.div>
+              .
+            </span>
+          </p>
+        </motion.div>
 
-          {/* Right Bento Area: Bio & Highlights */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-8 flex flex-col justify-between gap-8"
-          >
-            {/* Bio Glass Card */}
-            <div className="rounded-3xl glass p-8 sm:p-10 border border-white/10 space-y-6 flex-1 flex flex-col justify-center relative overflow-hidden">
-              <div className="absolute bottom-0 left-0 w-60 h-60 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none" />
+        {/* What I Do Grid */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-5"
+        >
+          {services.map((service, i) => (
+            <div
+              key={i}
+              className="group/card rounded-xl bg-white/[0.02] border border-white/[0.05] p-5 hover:bg-white/[0.04] hover:border-[#D4FF00]/15 transition-all duration-500 relative overflow-hidden cursor-default"
+            >
+              {/* Hover gradient fill */}
+              <div className="absolute inset-0 bg-gradient-to-br from-[#D4FF00]/[0.03] to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" />
 
-              {/* <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-purple-400 font-semibold">
-                <Sparkles className="w-4 h-4" /> About Me
-              </div> */}
-              <p className="text-lg sm:text-xl text-neutral-200 font-light leading-relaxed font-sans">
-                I'm a passionate developer and UI/UX designer with over 5 years of experience crafting digital solutions. Whether it's a complex SaaS platform, an interactive 3D web experience, or an AI-powered application, I bring ideas to life with clean code and rigorous attention to detail.
-              </p>
-            </div>
-
-            {/* Highlights Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              {highlights.map((item, i) => (
-                <div
-                  key={i}
-                  className="bg-white/[0.03] backdrop-blur-2xl border border-white/[0.08] rounded-2xl p-5 hover:border-purple-500/40 hover:bg-white/[0.06] transition-all duration-500 group shadow-lg flex flex-col justify-between"
-                >
-                  <item.icon className="w-6 h-6 text-white/60 mb-4 group-hover:text-purple-400 group-hover:scale-110 transition-all duration-300" strokeWidth={1.5} />
-                  <div>
-                    <div className="font-bold text-white text-sm tracking-tight mb-1">{item.label}</div>
-                    <div className="text-xs text-neutral-400 font-light leading-snug">{item.desc}</div>
-                  </div>
+              <div className="relative">
+                <div className="w-9 h-9 rounded-lg bg-[#D4FF00]/[0.08] border border-[#D4FF00]/[0.12] flex items-center justify-center mb-4 group-hover/card:bg-[#D4FF00]/[0.12] transition-colors duration-500">
+                  <service.icon
+                    className="w-4 h-4 text-[#D4FF00]/70"
+                    strokeWidth={1.5}
+                  />
                 </div>
-              ))}
+                <h4 className="text-sm font-semibold text-white tracking-tight mb-1.5">
+                  {service.title}
+                </h4>
+                <p className="text-xs text-white/30 font-light leading-relaxed">
+                  {service.desc}
+                </p>
+              </div>
             </div>
-          </motion.div>
-        </div>
+          ))}
+        </motion.div>
+
+        {/* ── Tech Stack Marquee ── */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.8, delay: 0.45 }}
+          className="rounded-2xl bg-white/[0.015] border border-white/[0.04] py-4 overflow-hidden relative"
+        >
+          {/* Edge fades */}
+          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#0B0C0E] to-transparent z-10" />
+          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#0B0C0E] to-transparent z-10" />
+
+          <div className="flex about-marquee gap-8 whitespace-nowrap">
+            {[...techStack, ...techStack, ...techStack].map((tech, i) => (
+              <span
+                key={i}
+                className="text-xs font-medium text-white/25 tracking-wide uppercase flex items-center gap-2 shrink-0"
+              >
+                <span className="w-1 h-1 rounded-full bg-[#D4FF00]/30" />
+                {tech}
+              </span>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

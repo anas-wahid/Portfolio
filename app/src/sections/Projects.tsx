@@ -1,245 +1,356 @@
 import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { ExternalLink, Github } from 'lucide-react';
-import { PremiumPillButton } from '@/components/ui/PremiumPillButton';
+import { ArrowUpRight, ExternalLink, ChevronRight, LayoutGrid, List } from 'lucide-react';
+
+const filterTags = ['Featured', 'React', 'TypeScript', 'AI · ML', 'SaaS', 'Node.js', 'Next.js', 'E-Commerce', 'WebGL'];
 
 const projects = [
   {
     title: 'Nexus Commerce',
     description:
       'A full-featured e-commerce platform with real-time analytics, inventory management, and AI-powered product recommendations.',
-    image: '/images/project-ecommerce.jpg',
+    categories: ['E-Commerce', 'SaaS'],
+    duration: '3 Months',
+    images: [
+      '/images/project-ecommerce.jpg',
+      '/images/project-ecommerce.jpg',
+      '/images/project-ecommerce.jpg',
+      '/images/project-ecommerce.jpg',
+    ],
     tags: ['Next.js', 'TypeScript', 'Stripe', 'PostgreSQL'],
-    link: '#',
-    github: '#',
-    accent: '#8b5cf6',
+    caseStudy: '#',
+    visitSite: '#',
   },
   {
     title: 'AI Conversational Platform',
     description:
       'An intelligent chatbot framework with multi-model support, conversation memory, and custom agent builder interface.',
-    image: '/images/project-ai-chat.jpg',
+    categories: ['AI · ML', 'SaaS'],
+    duration: '5 Months',
+    images: [
+      '/images/project-ai-chat.jpg',
+      '/images/project-ai-chat.jpg',
+      '/images/project-ai-chat.jpg',
+      '/images/project-ai-chat.jpg',
+    ],
     tags: ['React', 'Python', 'OpenAI', 'WebSocket'],
-    link: '#',
-    github: '#',
-    accent: '#22d3ee',
+    caseStudy: '#',
+    visitSite: '#',
   },
   {
     title: 'Immersive Portfolio Engine',
     description:
       'A 3D portfolio generator with particle effects, scroll-based animations, and WebGL-powered visual experiences.',
-    image: '/images/project-portfolio.jpg',
+    categories: ['WebGL', 'React'],
+    duration: '2 Months',
+    images: [
+      '/images/project-portfolio.jpg',
+      '/images/project-portfolio.jpg',
+      '/images/project-portfolio.jpg',
+      '/images/project-portfolio.jpg',
+    ],
     tags: ['Three.js', 'GSAP', 'React', 'WebGL'],
-    link: '#',
-    github: '#',
-    accent: '#e879f9',
+    caseStudy: '#',
+    visitSite: '#',
   },
   {
     title: 'FitTrack Pro',
     description:
       'A comprehensive fitness tracking app with workout plans, nutrition logging, and progress visualization dashboards.',
-    image: '/images/project-fitness.jpg',
+    categories: ['SaaS', 'React'],
+    duration: '4 Months',
+    images: [
+      '/images/project-fitness.jpg',
+      '/images/project-fitness.jpg',
+      '/images/project-fitness.jpg',
+      '/images/project-fitness.jpg',
+    ],
     tags: ['React Native', 'Firebase', 'Chart.js', 'Node.js'],
-    link: '#',
-    github: '#',
-    accent: '#60a5fa',
+    caseStudy: '#',
+    visitSite: '#',
   },
   {
     title: 'DataVision Analytics',
     description:
       'Enterprise-grade analytics dashboard with real-time data streams, customizable widgets, and collaborative features.',
-    image: '/images/project-analytics.jpg',
+    categories: ['SaaS', 'TypeScript'],
+    duration: '6 Months',
+    images: [
+      '/images/project-analytics.jpg',
+      '/images/project-analytics.jpg',
+      '/images/project-analytics.jpg',
+      '/images/project-analytics.jpg',
+    ],
     tags: ['Vue.js', 'D3.js', 'GraphQL', 'AWS'],
-    link: '#',
-    github: '#',
-    accent: '#f472b6',
+    caseStudy: '#',
+    visitSite: '#',
   },
   {
     title: 'SocialSync Manager',
     description:
       'A social media management tool with content scheduling, engagement analytics, and multi-platform publishing.',
-    image: '/images/project-social.jpg',
+    categories: ['SaaS', 'Next.js'],
+    duration: '3 Months',
+    images: [
+      '/images/project-social.jpg',
+      '/images/project-social.jpg',
+      '/images/project-social.jpg',
+      '/images/project-social.jpg',
+    ],
     tags: ['Next.js', 'tRPC', 'Tailwind', 'Redis'],
-    link: '#',
-    github: '#',
-    accent: '#a78bfa',
+    caseStudy: '#',
+    visitSite: '#',
   },
 ];
+
+function ImageCarousel({ images, projectIndex }: { images: string[]; projectIndex: number }) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollRight = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: 340, behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <div className="relative group/carousel">
+      <div
+        ref={scrollRef}
+        className="flex gap-4 overflow-x-auto scrollbar-hide pb-2 snap-x snap-mandatory"
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+      >
+        {images.map((img, i) => (
+          <div
+            key={i}
+            className="flex-shrink-0 w-[300px] sm:w-[340px] lg:w-[380px] snap-start"
+          >
+            <div className="relative rounded-xl overflow-hidden bg-[#111] border border-white/[0.06] aspect-[4/3]">
+              <img
+                src={img}
+                alt={`Screenshot ${i + 1}`}
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  // Show a placeholder gradient if image fails
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                  target.parentElement!.classList.add('bg-gradient-to-br', 'from-white/[0.03]', 'to-white/[0.01]');
+                }}
+              />
+              {/* Slide number */}
+              <div className="absolute bottom-0 left-0 right-0 px-4 py-3 bg-gradient-to-t from-black/60 to-transparent">
+                <span className="text-[11px] font-mono text-white/40">
+                  <span className="text-white/60">0{i + 1}</span>{' '}
+                  <span className="text-white/20">/ 0{images.length}</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Scroll right button */}
+      <button
+        onClick={scrollRight}
+        className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/[0.1] flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 hover:bg-white/20 cursor-pointer z-10"
+      >
+        <ChevronRight className="w-5 h-5 text-white" />
+      </button>
+    </div>
+  );
+}
 
 export default function Projects() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [showAll, setShowAll] = useState(false);
-
-  const displayedProjects = showAll ? projects : projects.slice(0, 3);
+  const [viewMode, setViewMode] = useState<'carousel' | 'list'>('carousel');
+  const [activeFilter, setActiveFilter] = useState('Featured');
 
   return (
-    <>
-      <section id="projects" className="relative z-10 py-24 md:py-32 px-6" ref={ref}>
-        <div className="max-w-6xl mx-auto">
-          {/* Giant Section Title */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full select-none pointer-events-none overflow-hidden mb-12 sm:mb-16"
-          >
-            <h2 className="text-[12vw] font-black tracking-tighter text-white/10 uppercase leading-none">
-              PROJECTS
-            </h2>
-          </motion.div>
+    <section id="projects" className="relative z-10 py-24 md:py-32 px-6 sm:px-10 lg:px-10" ref={ref}>
+      <div className="max-w-5xl">
+        {/* Section Number */}
+        <motion.span
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.5 }}
+          className="section-label block mb-4"
+        >
+          04
+        </motion.span>
 
-          {/* Section Header */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-20 md:mb-28">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="lg:col-span-6"
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.1 }}
+          className="mb-4"
+        >
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.05]">
+            Selected work
+          </h2>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10"
+        >
+          <p className="text-base text-white/35 font-light leading-relaxed max-w-xl">
+            Production apps, client builds, and personal projects.
+          </p>
+
+          {/* Carousel / List Toggle */}
+          <div className="flex items-center gap-1 bg-white/[0.04] border border-white/[0.06] rounded-lg p-1 shrink-0">
+            <button
+              onClick={() => setViewMode('carousel')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all cursor-pointer ${
+                viewMode === 'carousel'
+                  ? 'bg-white/[0.08] text-white'
+                  : 'text-white/30 hover:text-white/50'
+              }`}
             >
-              <h3 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white font-sans leading-[1.15]">
-                Featured <br className="hidden sm:block" /> Digital Works
-              </h3>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="lg:col-span-6 flex items-end"
+              <LayoutGrid className="w-3.5 h-3.5" />
+              Carousel
+            </button>
+            <button
+              onClick={() => setViewMode('list')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all cursor-pointer ${
+                viewMode === 'list'
+                  ? 'bg-white/[0.08] text-white'
+                  : 'text-white/30 hover:text-white/50'
+              }`}
             >
-              <p className="text-base sm:text-lg text-neutral-400 font-light leading-relaxed max-w-xl font-sans">
-                A curated selection of flagship projects showcasing my expertise in full-stack architecture, AI integration, and interactive 3D design.
-              </p>
-            </motion.div>
+              <List className="w-3.5 h-3.5" />
+              List
+            </button>
           </div>
+        </motion.div>
 
-          {/* Vertical alternating list of browser mockups */}
-          <div className="space-y-24 md:space-y-36">
-            {displayedProjects.map((project, i) => {
-              const isEven = i % 2 === 0;
-              const isHovered = hoveredIndex === i;
-              
-              return (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                  className={`flex flex-col lg:flex-row gap-8 lg:gap-16 items-center ${
-                    isEven ? '' : 'lg:flex-row-reverse'
-                  }`}
-                  onMouseEnter={() => setHoveredIndex(i)}
-                  onMouseLeave={() => setHoveredIndex(null)}
-                >
-                  {/* Left/Right Column: Browser Mockup Card */}
-                  <div className="w-full lg:w-7/12">
-                    <div 
-                      className="relative group/mockup rounded-2xl overflow-hidden border border-white/10 bg-[#161616] shadow-2xl transition-all duration-500 hover:scale-[1.02] hover:border-white/20"
-                      style={{
-                        boxShadow: isHovered 
-                          ? `0 25px 50px -12px ${project.accent}22` 
-                          : '0 25px 50px -12px rgba(0,0,0,0.5)'
-                      }}
-                    >
-                      {/* Browser Header Bar */}
-                      <div className="flex items-center justify-between px-4 py-3 bg-neutral-100 border-b border-neutral-200">
-                        {/* Dots */}
-                        <div className="flex gap-1.5 shrink-0">
-                          <div className="w-2.5 h-2.5 rounded-full bg-neutral-300" />
-                          <div className="w-2.5 h-2.5 rounded-full bg-neutral-300" />
-                          <div className="w-2.5 h-2.5 rounded-full bg-neutral-300" />
-                        </div>
-                        {/* Address Bar */}
-                        <div className="w-3/5 py-1 px-3 bg-white border border-neutral-200 rounded-md text-[10px] text-neutral-400 text-center font-mono truncate select-none transition-colors group-hover/mockup:text-neutral-500">
-                          https://{project.title.toLowerCase().replace(/\s+/g, '')}.dev
-                        </div>
-                        {/* Empty Space for alignment */}
-                        <div className="w-10" />
-                      </div>
+        {/* Scrolling Filter Marquee */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="mb-16 border-y border-white/[0.06] py-4 overflow-hidden"
+        >
+          <div className="flex gap-6 sm:gap-8 overflow-x-auto scrollbar-hide" style={{ scrollbarWidth: 'none' }}>
+            {filterTags.map((tag) => (
+              <button
+                key={tag}
+                onClick={() => setActiveFilter(tag)}
+                className={`text-[11px] sm:text-xs font-semibold tracking-[0.15em] uppercase whitespace-nowrap transition-colors duration-300 cursor-pointer ${
+                  activeFilter === tag
+                    ? 'text-[#D4FF00]'
+                    : 'text-white/20 hover:text-white/40'
+                }`}
+              >
+                {tag}
+              </button>
+            ))}
+          </div>
+        </motion.div>
 
-                      {/* Image container inside the browser window */}
-                      <div className="relative aspect-[16/10] overflow-hidden bg-[#121212]">
-                        <img
-                          src={project.image}
-                          alt={project.title}
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover/mockup:scale-105"
-                          onError={(e) => {
-                            // If mockup image fails, load a solid colored gradient block
-                            (e.target as HTMLElement).style.display = 'none';
-                          }}
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Left/Right Column: Project Details */}
-                  <div className="w-full lg:w-5/12 space-y-5">
-                    <span 
-                      className="text-xs font-bold uppercase tracking-widest block transition-colors duration-300"
-                      style={{ color: isHovered ? project.accent : '#9ca3af' }}
-                    >
-                      Project 0{i + 1}
+        {/* Projects */}
+        <div className="space-y-20 sm:space-y-28">
+          {projects.map((project, i) => (
+            <motion.article
+              key={i}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.7 }}
+              className="group"
+            >
+              {/* Project Header */}
+              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-6">
+                {/* Left: Meta + Title + Desc */}
+                <div className="max-w-2xl">
+                  {/* Metadata line */}
+                  <div className="flex items-center gap-2 mb-3 flex-wrap">
+                    <span className="text-sm font-bold text-[#D4FF00] font-mono">
+                      0{i + 1}
                     </span>
-                    <h3 className="text-3xl font-extrabold tracking-tight text-white font-sans">
-                      {project.title}
-                    </h3>
-                    <p className="text-base text-white/60 font-light leading-relaxed font-sans">
-                      {project.description}
-                    </p>
-
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-2 pt-2">
-                      {project.tags.map((tag, ti) => (
-                        <span
-                          key={ti}
-                          className="text-xs px-3 py-1 rounded-full border transition-all duration-300"
-                          style={{
-                            background: isHovered ? `${project.accent}15` : 'rgba(255,255,255,0.04)',
-                            borderColor: isHovered ? `${project.accent}33` : 'rgba(255,255,255,0.08)',
-                            color: isHovered ? project.accent : '#9ca3af',
-                          }}
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Action buttons */}
-                    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4">
-                      <a
-                        href={project.link}
-                        onClick={(e) => e.preventDefault()}
-                        className="px-6 py-2.5 rounded-full bg-white text-black font-semibold text-sm hover:bg-white/90 transition-all flex items-center justify-center gap-2 group/btn shadow-md hover:scale-105 w-full sm:w-auto"
-                      >
-                        Live Preview
-                        <ExternalLink className="w-4 h-4 transition-transform group-hover/btn:translate-x-0.5" />
-                      </a>
-                      <a
-                        href={project.github}
-                        onClick={(e) => e.preventDefault()}
-                        className="px-6 py-2.5 rounded-full glass text-white font-semibold text-sm hover:bg-white/10 transition-all flex items-center justify-center gap-2 group/btn hover:scale-105 w-full sm:w-auto"
-                      >
-                        Code
-                        <Github className="w-4 h-4 transition-transform group-hover/btn:translate-x-0.5" />
-                      </a>
-                    </div>
+                    <span className="text-white/10">—</span>
+                    <span className="text-xs text-white/30 tracking-wide">
+                      {project.categories.join(' · ')}
+                    </span>
+                    <span className="text-white/10">·</span>
+                    <span className="text-xs text-white/25">{project.duration}</span>
                   </div>
-                </motion.div>
-              );
-            })}
-          </div>
 
-          {/* Show All Projects Toggle Button */}
-          <div className="flex justify-center mt-24 md:mt-32">
-            <PremiumPillButton onClick={() => setShowAll(!showAll)}>
-              {showAll ? 'Show Less' : 'Show All Projects'}
-            </PremiumPillButton>
-          </div>
+                  {/* Title */}
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-3">
+                    {project.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-sm sm:text-base text-white/35 font-light leading-relaxed">
+                    {project.description}
+                  </p>
+                </div>
+
+                {/* Right: Action Buttons */}
+                <div className="flex flex-wrap gap-2.5 shrink-0 lg:pt-8">
+                  <a
+                    href={project.caseStudy}
+                    onClick={(e) => e.preventDefault()}
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/[0.06] border border-white/[0.08] text-white text-sm font-medium hover:bg-white/[0.1] hover:border-white/[0.15] transition-all duration-300"
+                  >
+                    Case study
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </a>
+                  <a
+                    href={project.visitSite}
+                    onClick={(e) => e.preventDefault()}
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/[0.06] border border-white/[0.08] text-white text-sm font-medium hover:bg-white/[0.1] hover:border-white/[0.15] transition-all duration-300"
+                  >
+                    Visit site
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              </div>
+
+              {/* Image Carousel or List View */}
+              {viewMode === 'carousel' ? (
+                <ImageCarousel images={project.images} projectIndex={i} />
+              ) : (
+                /* List view: single large image */
+                <div className="rounded-xl overflow-hidden bg-[#111] border border-white/[0.06] aspect-[16/9]">
+                  <img
+                    src={project.images[0]}
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                      target.parentElement!.classList.add('bg-gradient-to-br', 'from-white/[0.03]', 'to-white/[0.01]');
+                    }}
+                  />
+                </div>
+              )}
+            </motion.article>
+          ))}
         </div>
-      </section>
-    </>
+
+        {/* Archive Link */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mt-16 pt-8 border-t border-white/[0.06] flex justify-center"
+        >
+          <a
+            href="#"
+            onClick={(e) => e.preventDefault()}
+            className="inline-flex items-center gap-2 text-sm text-white/30 hover:text-[#D4FF00] transition-colors duration-300 font-medium"
+          >
+            View full project archive
+            <ArrowUpRight className="w-4 h-4" />
+          </a>
+        </motion.div>
+      </div>
+    </section>
   );
 }
