@@ -63,7 +63,7 @@ export default function About() {
           transition={{ duration: 0.5 }}
           className="section-label block mb-12"
         >
-          02 | About Me
+          <span className="text-[#D4FF00]">02</span> | About Me
         </motion.span>
 
         {/* Name & Title */}

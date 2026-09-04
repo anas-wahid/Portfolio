@@ -1,18 +1,18 @@
 import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Sparkles, Trophy, Rocket, Star } from 'lucide-react';
-import { useBooking } from '@/providers/BookingProvider';
+
 
 const trustBadges = [
   { icon: Star, label: 'Top Rated' },
   { icon: Trophy, label: 'Award Winning' },
-  { icon: Rocket, label: '50+ Shipped' },
+  { icon: Rocket, label: '30+ Shipped' },
   { icon: Sparkles, label: 'Premium Quality' },
 ];
 
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);
-  const { openBooking } = useBooking();
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,7 +40,7 @@ export default function Hero() {
           className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-10"
         >
           <span className="section-label">
-            01 | Full-Stack & AI Engineer
+            <span className="text-[#D4FF00]">01</span> | Full-Stack & AI Engineer
           </span>
           <div className="flex items-center gap-6">
             <div className="text-right">

@@ -47,7 +47,7 @@ export default function Services() {
           transition={{ duration: 0.5 }}
           className="section-label block mb-8"
         >
-          05 | Services
+          <span className="text-[#D4FF00]">05</span> | Services
         </motion.span>
 
         {/* Header */}

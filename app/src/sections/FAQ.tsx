@@ -8,10 +8,10 @@ const faqs = [
     question: "What makes working with you different from other developers?",
     answer: "I offer full-stack web development, UI/UX design, and strategic technical consulting to help bring your vision to life. My expertise spans from React and Next.js to complex backend architectures, with a focus on premium quality and attention to detail."
   },
-  {
-    question: "What's your design process like?",
-    answer: "My process is iterative and collaborative. I start with discovery and wireframes, move to high-fidelity designs, and finally implementation — with continuous feedback loops at every stage."
-  },
+  // {
+  //   question: "What's your design process like?",
+  //   answer: "My process is iterative and collaborative. I start with discovery and wireframes, move to high-fidelity designs, and finally implementation — with continuous feedback loops at every stage."
+  // },
   {
     question: "How long does a typical project take?",
     answer: "Project timelines vary depending on complexity. A typical website takes 4-6 weeks, while a complex web application could take 3-6 months. I ensure transparent communication throughout the process."
@@ -27,11 +27,11 @@ const faqs = [
   {
     question: "Do you work with agencies, or only direct clients?",
     answer: "I work with both! I frequently partner with creative agencies as an extension of their technical team, as well as direct clients and founders."
-  },
-  {
-    question: "What is GSAP, and why do you specialize in it?",
-    answer: "GSAP is a robust JavaScript animation library. I use it to create complex, high-performance web animations that feel fluid and premium — the kind that wins awards and impresses users."
   }
+  // {
+  //   question: "What is GSAP, and why do you specialize in it?",
+  //   answer: "GSAP is a robust JavaScript animation library. I use it to create complex, high-performance web animations that feel fluid and premium — the kind that wins awards and impresses users."
+  // }
 ];
 
 export default function FAQ() {
@@ -39,15 +39,9 @@ export default function FAQ() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const { openBooking } = useBooking();
+
   const [isCtaHovered, setIsCtaHovered] = useState(false);
   const [ctaMousePos, setCtaMousePos] = useState({ x: 0, y: 0 });
-
-  const scrollToContact = () => {
-    const el = document.getElementById('contact');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <section id="faq" className="py-24 md:py-32 px-6 sm:px-10 lg:px-10 relative z-10" ref={ref}>
@@ -59,7 +53,7 @@ export default function FAQ() {
           transition={{ duration: 0.5 }}
           className="section-label block mb-8"
         >
-          06 | FAQ
+          <span className="text-[#D4FF00]">06</span> | FAQ
         </motion.span>
 
         {/* Header */}
@@ -127,12 +121,11 @@ export default function FAQ() {
           transition={{ duration: 0.7 }}
         >
           <div
-            onClick={scrollToContact}
-            className={`mt-16 rounded-3xl relative overflow-hidden transition-all duration-500 cursor-pointer border ${
-              isCtaHovered
+            onClick={openBooking}
+            className={`mt-16 rounded-3xl relative overflow-hidden transition-all duration-500 cursor-pointer border ${isCtaHovered
                 ? 'border-[#D4FF00] shadow-[0_20px_60px_-10px_rgba(212,255,0,0.35)]'
                 : 'border-white/[0.08] hover:border-white/20'
-            }`}
+              }`}
             onMouseEnter={(e) => {
               const rect = e.currentTarget.getBoundingClientRect();
               setCtaMousePos({
@@ -165,7 +158,7 @@ export default function FAQ() {
                 type="button"
                 onClick={(e) => {
                   e.stopPropagation();
-                  scrollToContact();
+                  openBooking();
                 }}
                 className="inline-flex items-center gap-2.5 px-7 py-3.5 font-bold text-sm rounded-full bg-[#D4FF00] text-black shadow-[0_4px_20px_rgba(212,255,0,0.25)] hover:brightness-110 transition-all duration-300 hover:scale-105 cursor-pointer"
               >
@@ -181,7 +174,7 @@ export default function FAQ() {
               </button>
             </div>
 
-            {/* LAYER 2: Full Color Reveal Layer (Top right corner to full with ease-in-out) */}
+            {/* LAYER 2: Full Color Reveal Layer */}
             <div
               className="absolute inset-0 z-20 pointer-events-none p-8 sm:p-12 flex flex-col justify-start"
               style={{

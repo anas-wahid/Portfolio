@@ -127,7 +127,7 @@ export default function Skills() {
           transition={{ duration: 0.5 }}
           className="section-label block mb-8"
         >
-          03 | Tech Stack
+          <span className="text-[#D4FF00]">03</span> | Tech Stack
         </motion.span>
 
         {/* Header */}

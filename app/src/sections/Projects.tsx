@@ -6,6 +6,22 @@ const filterTags = ['Featured', 'React', 'TypeScript', 'AI · ML', 'SaaS', 'Node
 
 const projects = [
   {
+    title: 'Testo — AI Repo Analyzer',
+    description:
+      'An AI-powered platform that automatically analyzes GitHub repositories, generates comprehensive test suites, and runs browser-based testing — ship bug-free code with zero manual tests.',
+    categories: ['AI · ML', 'SaaS'],
+    duration: '2 Months',
+    images: [
+      '/images/project-testo-landing.jpg',
+      '/images/project-testo-dashboard.jpg',
+      '/images/project-testo-projects.jpg',
+      '/images/project-testo-history.jpg',
+    ],
+    tags: ['React', 'TypeScript', 'AI', 'Node.js'],
+    caseStudy: 'https://ai-repo-analysis.vercel.app/',
+    visitSite: 'https://ai-repo-analysis.vercel.app/',
+  },
+  {
     title: 'Nexus Commerce',
     description:
       'A full-featured e-commerce platform with real-time analytics, inventory management, and AI-powered product recommendations.',
@@ -103,7 +119,7 @@ const projects = [
   },
 ];
 
-function ImageCarousel({ images, projectIndex }: { images: string[]; projectIndex: number }) {
+function ImageCarousel({ images }: { images: string[]; projectIndex: number }) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scrollRight = () => {
@@ -175,7 +191,7 @@ export default function Projects() {
           transition={{ duration: 0.5 }}
           className="section-label block mb-4"
         >
-          04
+          <span className="text-[#D4FF00]">04</span>
         </motion.span>
 
         {/* Header */}
@@ -294,7 +310,8 @@ export default function Projects() {
                 <div className="flex flex-wrap gap-2.5 shrink-0 lg:pt-8">
                   <a
                     href={project.caseStudy}
-                    onClick={(e) => e.preventDefault()}
+                    {...(project.caseStudy !== '#' ? { target: '_blank', rel: 'noreferrer' } : {})}
+                    onClick={project.caseStudy === '#' ? (e) => e.preventDefault() : undefined}
                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/[0.06] border border-white/[0.08] text-white text-sm font-medium hover:bg-white/[0.1] hover:border-white/[0.15] transition-all duration-300"
                   >
                     Case study
@@ -302,7 +319,8 @@ export default function Projects() {
                   </a>
                   <a
                     href={project.visitSite}
-                    onClick={(e) => e.preventDefault()}
+                    {...(project.visitSite !== '#' ? { target: '_blank', rel: 'noreferrer' } : {})}
+                    onClick={project.visitSite === '#' ? (e) => e.preventDefault() : undefined}
                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/[0.06] border border-white/[0.08] text-white text-sm font-medium hover:bg-white/[0.1] hover:border-white/[0.15] transition-all duration-300"
                   >
                     Visit site
