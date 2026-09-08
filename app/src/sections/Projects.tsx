@@ -22,6 +22,39 @@ const projects = [
     visitSite: 'https://ai-repo-analysis.vercel.app/',
   },
   {
+    title: 'AdPilot — Ad Management Dashboard',
+    description:
+      'A full-featured ad management SaaS that turns ad spend into real profit. Track orders, commissions, campaigns, and expenses — with AI-powered order extraction and real-time P&L reporting.',
+    categories: ['SaaS', 'React'],
+    duration: '3 Months',
+    images: [
+      // '/images/project-adpilot-campaigns.jpg',
+      '/images/project-adpilot-landing.jpg',
+      '/images/project-adpilot-dashboard.jpg',
+      '/images/project-adpilot-orders.jpg',
+      '/images/project-adpilot-commissions.jpg',
+    ],
+    tags: ['React', 'TypeScript', 'Node.js', 'AI'],
+    caseStudy: 'https://admanagment.vercel.app/',
+    visitSite: 'https://admanagment.vercel.app/',
+  },
+  {
+    title: 'Self-Learning Agent — AI Memory Platform',
+    description:
+      'An intelligent AI platform that remembers you — it builds and recalls memory to enhance your daily workflow. Features context awareness, learning patterns, multi-modal support, and real-time sync across all devices.',
+    categories: ['AI · ML', 'SaaS'],
+    duration: '4 Months',
+    images: [
+      '/images/project-sla-landing.jpg',
+      '/images/project-sla-features.jpg',
+      '/images/project-sla-views.jpg',
+      '/images/project-sla-testimonials.jpg',
+    ],
+    tags: ['React', 'TypeScript', 'Python', 'AI'],
+    caseStudy: '#',
+    visitSite: '#',
+  },
+  {
     title: 'Nexus Commerce',
     description:
       'A full-featured e-commerce platform with real-time analytics, inventory management, and AI-powered product recommendations.',
@@ -144,7 +177,7 @@ function ImageCarousel({ images }: { images: string[]; projectIndex: number }) {
               <img
                 src={img}
                 alt={`Screenshot ${i + 1}`}
-                className="w-full h-full object-cover"
+                className={`w-full h-full object-cover ${img.includes('landing') ? 'object-top' : ''}`}
                 onError={(e) => {
                   // Show a placeholder gradient if image fails
                   const target = e.target as HTMLImageElement;
@@ -220,22 +253,20 @@ export default function Projects() {
           <div className="flex items-center gap-1 bg-white/[0.04] border border-white/[0.06] rounded-lg p-1 shrink-0">
             <button
               onClick={() => setViewMode('carousel')}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all cursor-pointer ${
-                viewMode === 'carousel'
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all cursor-pointer ${viewMode === 'carousel'
                   ? 'bg-white/[0.08] text-white'
                   : 'text-white/30 hover:text-white/50'
-              }`}
+                }`}
             >
               <LayoutGrid className="w-3.5 h-3.5" />
               Carousel
             </button>
             <button
               onClick={() => setViewMode('list')}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all cursor-pointer ${
-                viewMode === 'list'
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all cursor-pointer ${viewMode === 'list'
                   ? 'bg-white/[0.08] text-white'
                   : 'text-white/30 hover:text-white/50'
-              }`}
+                }`}
             >
               <List className="w-3.5 h-3.5" />
               List
@@ -255,11 +286,10 @@ export default function Projects() {
               <button
                 key={tag}
                 onClick={() => setActiveFilter(tag)}
-                className={`text-[11px] sm:text-xs font-semibold tracking-[0.15em] uppercase whitespace-nowrap transition-colors duration-300 cursor-pointer ${
-                  activeFilter === tag
+                className={`text-[11px] sm:text-xs font-semibold tracking-[0.15em] uppercase whitespace-nowrap transition-colors duration-300 cursor-pointer ${activeFilter === tag
                     ? 'text-[#D4FF00]'
                     : 'text-white/20 hover:text-white/40'
-                }`}
+                  }`}
               >
                 {tag}
               </button>

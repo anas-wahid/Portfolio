@@ -44,12 +44,12 @@ export default function Hero() {
           </span>
           <div className="flex items-center gap-6">
             <div className="text-right">
-              <div className="text-xl sm:text-2xl font-bold text-white">5+</div>
+              <div className="text-xl sm:text-2xl font-bold text-white">3+</div>
               <div className="text-[10px] tracking-wider uppercase text-white/30 font-medium">Years</div>
             </div>
             <div className="w-px h-8 bg-white/10" />
             <div className="text-right">
-              <div className="text-xl sm:text-2xl font-bold text-white">50+</div>
+              <div className="text-xl sm:text-2xl font-bold text-white">30+</div>
               <div className="text-[10px] tracking-wider uppercase text-white/30 font-medium">Projects</div>
             </div>
           </div>
