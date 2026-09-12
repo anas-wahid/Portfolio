@@ -54,102 +54,102 @@ const projects = [
     caseStudy: '#',
     visitSite: '#',
   },
-  {
-    title: 'Nexus Commerce',
-    description:
-      'A full-featured e-commerce platform with real-time analytics, inventory management, and AI-powered product recommendations.',
-    categories: ['E-Commerce', 'SaaS'],
-    duration: '3 Months',
-    images: [
-      '/images/project-ecommerce.jpg',
-      '/images/project-ecommerce.jpg',
-      '/images/project-ecommerce.jpg',
-      '/images/project-ecommerce.jpg',
-    ],
-    tags: ['Next.js', 'TypeScript', 'Stripe', 'PostgreSQL'],
-    caseStudy: '#',
-    visitSite: '#',
-  },
-  {
-    title: 'AI Conversational Platform',
-    description:
-      'An intelligent chatbot framework with multi-model support, conversation memory, and custom agent builder interface.',
-    categories: ['AI · ML', 'SaaS'],
-    duration: '5 Months',
-    images: [
-      '/images/project-ai-chat.jpg',
-      '/images/project-ai-chat.jpg',
-      '/images/project-ai-chat.jpg',
-      '/images/project-ai-chat.jpg',
-    ],
-    tags: ['React', 'Python', 'OpenAI', 'WebSocket'],
-    caseStudy: '#',
-    visitSite: '#',
-  },
-  {
-    title: 'Immersive Portfolio Engine',
-    description:
-      'A 3D portfolio generator with particle effects, scroll-based animations, and WebGL-powered visual experiences.',
-    categories: ['WebGL', 'React'],
-    duration: '2 Months',
-    images: [
-      '/images/project-portfolio.jpg',
-      '/images/project-portfolio.jpg',
-      '/images/project-portfolio.jpg',
-      '/images/project-portfolio.jpg',
-    ],
-    tags: ['Three.js', 'GSAP', 'React', 'WebGL'],
-    caseStudy: '#',
-    visitSite: '#',
-  },
-  {
-    title: 'FitTrack Pro',
-    description:
-      'A comprehensive fitness tracking app with workout plans, nutrition logging, and progress visualization dashboards.',
-    categories: ['SaaS', 'React'],
-    duration: '4 Months',
-    images: [
-      '/images/project-fitness.jpg',
-      '/images/project-fitness.jpg',
-      '/images/project-fitness.jpg',
-      '/images/project-fitness.jpg',
-    ],
-    tags: ['React Native', 'Firebase', 'Chart.js', 'Node.js'],
-    caseStudy: '#',
-    visitSite: '#',
-  },
-  {
-    title: 'DataVision Analytics',
-    description:
-      'Enterprise-grade analytics dashboard with real-time data streams, customizable widgets, and collaborative features.',
-    categories: ['SaaS', 'TypeScript'],
-    duration: '6 Months',
-    images: [
-      '/images/project-analytics.jpg',
-      '/images/project-analytics.jpg',
-      '/images/project-analytics.jpg',
-      '/images/project-analytics.jpg',
-    ],
-    tags: ['Vue.js', 'D3.js', 'GraphQL', 'AWS'],
-    caseStudy: '#',
-    visitSite: '#',
-  },
-  {
-    title: 'SocialSync Manager',
-    description:
-      'A social media management tool with content scheduling, engagement analytics, and multi-platform publishing.',
-    categories: ['SaaS', 'Next.js'],
-    duration: '3 Months',
-    images: [
-      '/images/project-social.jpg',
-      '/images/project-social.jpg',
-      '/images/project-social.jpg',
-      '/images/project-social.jpg',
-    ],
-    tags: ['Next.js', 'tRPC', 'Tailwind', 'Redis'],
-    caseStudy: '#',
-    visitSite: '#',
-  },
+  // {
+  //   title: 'Nexus Commerce',
+  //   description:
+  //     'A full-featured e-commerce platform with real-time analytics, inventory management, and AI-powered product recommendations.',
+  //   categories: ['E-Commerce', 'SaaS'],
+  //   duration: '3 Months',
+  //   images: [
+  //     '/images/project-ecommerce.jpg',
+  //     '/images/project-ecommerce.jpg',
+  //     '/images/project-ecommerce.jpg',
+  //     '/images/project-ecommerce.jpg',
+  //   ],
+  //   tags: ['Next.js', 'TypeScript', 'Stripe', 'PostgreSQL'],
+  //   caseStudy: '#',
+  //   visitSite: '#',
+  // },
+  // {
+  //   title: 'AI Conversational Platform',
+  //   description:
+  //     'An intelligent chatbot framework with multi-model support, conversation memory, and custom agent builder interface.',
+  //   categories: ['AI · ML', 'SaaS'],
+  //   duration: '5 Months',
+  //   images: [
+  //     '/images/project-ai-chat.jpg',
+  //     '/images/project-ai-chat.jpg',
+  //     '/images/project-ai-chat.jpg',
+  //     '/images/project-ai-chat.jpg',
+  //   ],
+  //   tags: ['React', 'Python', 'OpenAI', 'WebSocket'],
+  //   caseStudy: '#',
+  //   visitSite: '#',
+  // },
+  // {
+  //   title: 'Immersive Portfolio Engine',
+  //   description:
+  //     'A 3D portfolio generator with particle effects, scroll-based animations, and WebGL-powered visual experiences.',
+  //   categories: ['WebGL', 'React'],
+  //   duration: '2 Months',
+  //   images: [
+  //     '/images/project-portfolio.jpg',
+  //     '/images/project-portfolio.jpg',
+  //     '/images/project-portfolio.jpg',
+  //     '/images/project-portfolio.jpg',
+  //   ],
+  //   tags: ['Three.js', 'GSAP', 'React', 'WebGL'],
+  //   caseStudy: '#',
+  //   visitSite: '#',
+  // },
+  // {
+  //   title: 'FitTrack Pro',
+  //   description:
+  //     'A comprehensive fitness tracking app with workout plans, nutrition logging, and progress visualization dashboards.',
+  //   categories: ['SaaS', 'React'],
+  //   duration: '4 Months',
+  //   images: [
+  //     '/images/project-fitness.jpg',
+  //     '/images/project-fitness.jpg',
+  //     '/images/project-fitness.jpg',
+  //     '/images/project-fitness.jpg',
+  //   ],
+  //   tags: ['React Native', 'Firebase', 'Chart.js', 'Node.js'],
+  //   caseStudy: '#',
+  //   visitSite: '#',
+  // },
+  // {
+  //   title: 'DataVision Analytics',
+  //   description:
+  //     'Enterprise-grade analytics dashboard with real-time data streams, customizable widgets, and collaborative features.',
+  //   categories: ['SaaS', 'TypeScript'],
+  //   duration: '6 Months',
+  //   images: [
+  //     '/images/project-analytics.jpg',
+  //     '/images/project-analytics.jpg',
+  //     '/images/project-analytics.jpg',
+  //     '/images/project-analytics.jpg',
+  //   ],
+  //   tags: ['Vue.js', 'D3.js', 'GraphQL', 'AWS'],
+  //   caseStudy: '#',
+  //   visitSite: '#',
+  // },
+  // {
+  //   title: 'SocialSync Manager',
+  //   description:
+  //     'A social media management tool with content scheduling, engagement analytics, and multi-platform publishing.',
+  //   categories: ['SaaS', 'Next.js'],
+  //   duration: '3 Months',
+  //   images: [
+  //     '/images/project-social.jpg',
+  //     '/images/project-social.jpg',
+  //     '/images/project-social.jpg',
+  //     '/images/project-social.jpg',
+  //   ],
+  //   tags: ['Next.js', 'tRPC', 'Tailwind', 'Redis'],
+  //   caseStudy: '#',
+  //   visitSite: '#',
+  // },
 ];
 
 function ImageCarousel({ images }: { images: string[]; projectIndex: number }) {
@@ -254,8 +254,8 @@ export default function Projects() {
             <button
               onClick={() => setViewMode('carousel')}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all cursor-pointer ${viewMode === 'carousel'
-                  ? 'bg-white/[0.08] text-white'
-                  : 'text-white/30 hover:text-white/50'
+                ? 'bg-white/[0.08] text-white'
+                : 'text-white/30 hover:text-white/50'
                 }`}
             >
               <LayoutGrid className="w-3.5 h-3.5" />
@@ -264,8 +264,8 @@ export default function Projects() {
             <button
               onClick={() => setViewMode('list')}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all cursor-pointer ${viewMode === 'list'
-                  ? 'bg-white/[0.08] text-white'
-                  : 'text-white/30 hover:text-white/50'
+                ? 'bg-white/[0.08] text-white'
+                : 'text-white/30 hover:text-white/50'
                 }`}
             >
               <List className="w-3.5 h-3.5" />
@@ -287,8 +287,8 @@ export default function Projects() {
                 key={tag}
                 onClick={() => setActiveFilter(tag)}
                 className={`text-[11px] sm:text-xs font-semibold tracking-[0.15em] uppercase whitespace-nowrap transition-colors duration-300 cursor-pointer ${activeFilter === tag
-                    ? 'text-[#D4FF00]'
-                    : 'text-white/20 hover:text-white/40'
+                  ? 'text-[#D4FF00]'
+                  : 'text-white/20 hover:text-white/40'
                   }`}
               >
                 {tag}
