@@ -171,7 +171,7 @@ function ImageCarousel({ images }: { images: string[]; projectIndex: number }) {
         {images.map((img, i) => (
           <div
             key={i}
-            className="flex-shrink-0 w-[300px] sm:w-[340px] lg:w-[380px] snap-start"
+            className="flex-shrink-0 w-[260px] sm:w-[340px] lg:w-[380px] snap-start"
           >
             <div className="relative rounded-xl overflow-hidden bg-[#111] border border-white/[0.06] aspect-[4/3]">
               <img
@@ -215,7 +215,7 @@ export default function Projects() {
   const [activeFilter, setActiveFilter] = useState('Featured');
 
   return (
-    <section id="projects" className="relative z-10 py-24 md:py-32 px-6 sm:px-10 lg:px-10" ref={ref}>
+    <section id="projects" className="relative z-10 py-20 md:py-32 px-5 sm:px-10 lg:px-10" ref={ref}>
       <div className="max-w-5xl">
         {/* Section Number */}
         <motion.span
@@ -234,7 +234,7 @@ export default function Projects() {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="mb-4"
         >
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.05]">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-[1.05]">
             Selected work
           </h2>
         </motion.div>
@@ -243,7 +243,7 @@ export default function Projects() {
           initial={{ opacity: 0, y: 15 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10"
+          className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 sm:gap-4 mb-8 sm:mb-10"
         >
           <p className="text-base text-white/35 font-light leading-relaxed max-w-xl">
             Production apps, client builds, and personal projects.
@@ -279,7 +279,7 @@ export default function Projects() {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="mb-16 border-y border-white/[0.06] py-4 overflow-hidden"
+          className="mb-10 sm:mb-16 border-y border-white/[0.06] py-3 sm:py-4 overflow-hidden"
         >
           <div className="flex gap-6 sm:gap-8 overflow-x-auto scrollbar-hide" style={{ scrollbarWidth: 'none' }}>
             {filterTags.map((tag) => (
@@ -298,7 +298,7 @@ export default function Projects() {
         </motion.div>
 
         {/* Projects */}
-        <div className="space-y-20 sm:space-y-28">
+        <div className="space-y-16 sm:space-y-28">
           {projects.map((project, i) => (
             <motion.article
               key={i}
@@ -309,7 +309,7 @@ export default function Projects() {
               className="group"
             >
               {/* Project Header */}
-              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-6">
+              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-3 sm:gap-4 mb-5 sm:mb-6">
                 {/* Left: Meta + Title + Desc */}
                 <div className="max-w-2xl">
                   {/* Metadata line */}
@@ -326,7 +326,7 @@ export default function Projects() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-3">
+                  <h3 className="text-xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-2 sm:mb-3">
                     {project.title}
                   </h3>
 
@@ -337,12 +337,12 @@ export default function Projects() {
                 </div>
 
                 {/* Right: Action Buttons */}
-                <div className="flex flex-wrap gap-2.5 shrink-0 lg:pt-8">
+                <div className="flex flex-row gap-2 sm:gap-2.5 shrink-0 lg:pt-8">
                   <a
                     href={project.caseStudy}
                     {...(project.caseStudy !== '#' ? { target: '_blank', rel: 'noreferrer' } : {})}
                     onClick={project.caseStudy === '#' ? (e) => e.preventDefault() : undefined}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/[0.06] border border-white/[0.08] text-white text-sm font-medium hover:bg-white/[0.1] hover:border-white/[0.15] transition-all duration-300"
+                    className="inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/[0.06] border border-white/[0.08] text-white text-xs sm:text-sm font-medium hover:bg-white/[0.1] hover:border-white/[0.15] transition-all duration-300"
                   >
                     Case study
                     <ArrowUpRight className="w-3.5 h-3.5" />
@@ -351,7 +351,7 @@ export default function Projects() {
                     href={project.visitSite}
                     {...(project.visitSite !== '#' ? { target: '_blank', rel: 'noreferrer' } : {})}
                     onClick={project.visitSite === '#' ? (e) => e.preventDefault() : undefined}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/[0.06] border border-white/[0.08] text-white text-sm font-medium hover:bg-white/[0.1] hover:border-white/[0.15] transition-all duration-300"
+                    className="inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/[0.06] border border-white/[0.08] text-white text-xs sm:text-sm font-medium hover:bg-white/[0.1] hover:border-white/[0.15] transition-all duration-300"
                   >
                     Visit site
                     <ExternalLink className="w-3.5 h-3.5" />

@@ -44,7 +44,7 @@ export default function FAQ() {
   const [ctaMousePos, setCtaMousePos] = useState({ x: 0, y: 0 });
 
   return (
-    <section id="faq" className="py-24 md:py-32 px-6 sm:px-10 lg:px-10 relative z-10" ref={ref}>
+    <section id="faq" className="py-20 md:py-32 px-5 sm:px-10 lg:px-10 relative z-10" ref={ref}>
       <div className="max-w-6xl">
         {/* Section Number */}
         <motion.span
@@ -63,7 +63,7 @@ export default function FAQ() {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="mb-14"
         >
-          <h3 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-[1.1]">
+          <h3 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-white leading-[1.1]">
             Frequently Asked Questions
           </h3>
         </motion.div>
@@ -74,41 +74,67 @@ export default function FAQ() {
             const isOpen = openIndex === index;
 
             return (
-              <div
+              <motion.div
                 key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{
+                  duration: 0.5,
+                  delay: 0.2 + index * 0.1,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
                 className="border-b border-white/[0.06] overflow-hidden"
               >
-                <button
+                <motion.button
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="w-full flex items-center justify-between py-6 text-left group cursor-pointer"
+                  className="w-full flex items-center justify-between py-4 sm:py-6 text-left group cursor-pointer"
+                  whileHover={{ x: 4 }}
+                  transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
                 >
-                  <span className="text-base sm:text-lg font-medium text-white/70 group-hover:text-white transition-colors pr-6">
+                  <span
+                    className={`text-sm sm:text-lg font-medium pr-4 sm:pr-6 transition-colors duration-300 ${isOpen ? 'text-[#D4FF00]' : 'text-white/70 group-hover:text-white'
+                      }`}
+                  >
                     {faq.question}
                   </span>
                   <motion.div
                     animate={{ rotate: isOpen ? 45 : 0 }}
-                    transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-                    className="flex-shrink-0 text-white/20 group-hover:text-white/40 transition-colors"
+                    transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                    className={`flex-shrink-0 transition-colors duration-300 ${isOpen ? 'text-[#D4FF00]/60' : 'text-white/20 group-hover:text-white/40'
+                      }`}
                   >
                     <Plus className="w-5 h-5 stroke-[1.5]" />
                   </motion.div>
-                </button>
+                </motion.button>
 
-                <AnimatePresence>
+                <AnimatePresence initial={false}>
                   {isOpen && (
                     <motion.div
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                      transition={{
+                        height: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
+                        opacity: { duration: 0.3, delay: 0.05, ease: 'easeOut' },
+                      }}
                     >
-                      <div className="pb-6 text-white/35 text-sm leading-relaxed max-w-2xl pr-8">
+                      <motion.div
+                        initial={{ y: -8, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        exit={{ y: -8, opacity: 0 }}
+                        transition={{
+                          duration: 0.35,
+                          delay: 0.08,
+                          ease: [0.22, 1, 0.36, 1],
+                        }}
+                        className="pb-4 sm:pb-6 text-white/35 text-xs sm:text-sm leading-relaxed max-w-2xl pr-4 sm:pr-8"
+                      >
                         {faq.answer}
-                      </div>
+                      </motion.div>
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </div>
+              </motion.div>
             );
           })}
         </div>
@@ -122,9 +148,9 @@ export default function FAQ() {
         >
           <div
             onClick={openBooking}
-            className={`mt-16 rounded-3xl relative overflow-hidden transition-all duration-500 cursor-pointer border ${isCtaHovered
-                ? 'border-[#D4FF00] shadow-[0_20px_60px_-10px_rgba(212,255,0,0.35)]'
-                : 'border-white/[0.08] hover:border-white/20'
+            className={`mt-10 sm:mt-16 rounded-2xl sm:rounded-3xl relative overflow-hidden transition-all duration-500 cursor-pointer border ${isCtaHovered
+              ? 'border-[#D4FF00] shadow-[0_20px_60px_-10px_rgba(212,255,0,0.35)]'
+              : 'border-white/[0.08] hover:border-white/20'
               }`}
             onMouseEnter={(e) => {
               const rect = e.currentTarget.getBoundingClientRect();
@@ -147,11 +173,11 @@ export default function FAQ() {
             }}
           >
             {/* LAYER 1: Default Dark State */}
-            <div className="p-8 sm:p-12 bg-white/[0.02] relative z-10">
-              <h4 className="text-2xl sm:text-3xl font-black mb-3 tracking-tight text-white">
+            <div className="p-6 sm:p-12 bg-white/[0.02] relative z-10">
+              <h4 className="text-xl sm:text-3xl font-black mb-2 sm:mb-3 tracking-tight text-white">
                 Have more questions?
               </h4>
-              <p className="text-sm sm:text-base leading-relaxed mb-8 max-w-lg text-white/40 font-light">
+              <p className="text-xs sm:text-base leading-relaxed mb-6 sm:mb-8 max-w-lg text-white/40 font-light">
                 Book a short call to discuss the possibilities of working together.
               </p>
               <button
@@ -160,7 +186,7 @@ export default function FAQ() {
                   e.stopPropagation();
                   openBooking();
                 }}
-                className="inline-flex items-center gap-2.5 px-7 py-3.5 font-bold text-sm rounded-full bg-[#D4FF00] text-black shadow-[0_4px_20px_rgba(212,255,0,0.25)] hover:brightness-110 transition-all duration-300 hover:scale-105 cursor-pointer"
+                className="inline-flex items-center gap-2 px-5 sm:px-7 py-3 sm:py-3.5 font-bold text-xs sm:text-sm rounded-full bg-[#D4FF00] text-black shadow-[0_4px_20px_rgba(212,255,0,0.25)] hover:brightness-110 transition-all duration-300 hover:scale-105 cursor-pointer"
               >
                 Book a call
                 <svg
@@ -176,7 +202,7 @@ export default function FAQ() {
 
             {/* LAYER 2: Full Color Reveal Layer */}
             <div
-              className="absolute inset-0 z-20 pointer-events-none p-8 sm:p-12 flex flex-col justify-start"
+              className="absolute inset-0 z-20 pointer-events-none p-6 sm:p-12 flex flex-col justify-start"
               style={{
                 background: `radial-gradient(900px circle at ${ctaMousePos.x}px ${ctaMousePos.y}px, #EEFF66 0%, #D4FF00 45%, #BFE600 100%)`,
                 clipPath: isCtaHovered ? 'circle(160% at 100% 0%)' : 'circle(0% at 100% 0%)',
@@ -185,14 +211,14 @@ export default function FAQ() {
                   'clip-path 0.85s cubic-bezier(0.65, 0, 0.35, 1), -webkit-clip-path 0.85s cubic-bezier(0.65, 0, 0.35, 1)',
               }}
             >
-              <h4 className="text-2xl sm:text-3xl font-black mb-3 tracking-tight text-black">
+              <h4 className="text-xl sm:text-3xl font-black mb-2 sm:mb-3 tracking-tight text-black">
                 Have more questions?
               </h4>
-              <p className="text-sm sm:text-base leading-relaxed mb-8 max-w-lg text-black/85 font-medium">
+              <p className="text-xs sm:text-base leading-relaxed mb-6 sm:mb-8 max-w-lg text-black/85 font-medium">
                 Book a short call to discuss the possibilities of working together.
               </p>
               <div>
-                <span className="inline-flex items-center gap-2.5 px-7 py-3.5 font-bold text-sm rounded-full bg-black text-[#D4FF00] shadow-xl">
+                <span className="inline-flex items-center gap-2 px-5 sm:px-7 py-3 sm:py-3.5 font-bold text-xs sm:text-sm rounded-full bg-black text-[#D4FF00] shadow-xl">
                   Book a call
                   <svg
                     className="w-4 h-4 text-[#D4FF00]"

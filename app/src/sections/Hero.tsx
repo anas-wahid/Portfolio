@@ -29,7 +29,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col justify-center overflow-hidden px-6 sm:px-10 lg:px-10 py-20"
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden px-5 sm:px-10 lg:px-10 py-16 sm:py-20"
     >
       <div ref={heroRef} className="relative z-10 max-w-6xl">
         {/* Top metadata row */}
@@ -37,7 +37,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-10"
+          className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 mb-8 sm:mb-10"
         >
           <span className="section-label">
             <span className="text-[#D4FF00]">01</span> | Full-Stack & AI Engineer
@@ -60,7 +60,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05] text-white mb-6 select-none"
+          className="text-[2rem] sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.08] sm:leading-[1.05] text-white mb-5 sm:mb-6 select-none"
         >
           Building Digital{' '}
           <span className="text-[#D4FF00]">Experiences</span>{' '}
@@ -72,7 +72,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.35 }}
-          className="text-base sm:text-lg text-white/45 font-light leading-relaxed max-w-2xl mb-8"
+          className="text-sm sm:text-lg text-white/45 font-light leading-relaxed max-w-2xl mb-6 sm:mb-8"
         >
           Full-stack developer crafting SaaS platforms, AI tools, interactive web experiences,
           and scalable systems — from concept to production.
@@ -83,7 +83,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.45 }}
-          className="flex flex-col gap-3 mb-10"
+          className="flex flex-col gap-2.5 sm:gap-3 mb-8 sm:mb-10"
         >
           {[
             { title: 'Beyond the build', desc: 'I plan for scalability so your stack holds up as usage grows.' },
@@ -104,7 +104,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.55 }}
-          className="flex flex-wrap gap-3 mb-10"
+          className="flex flex-wrap gap-2 sm:gap-3 mb-8 sm:mb-10"
         >
           {trustBadges.map((badge, i) => (
             <div
@@ -122,7 +122,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.65 }}
-          className="flex flex-col sm:flex-row gap-3"
+          className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto"
         >
           <a
             href="#projects"
@@ -130,7 +130,7 @@ export default function Hero() {
               e.preventDefault();
               document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[#D4FF00] text-black font-semibold text-sm rounded-full hover:brightness-110 transition-all duration-300 hover:scale-[1.02]"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#D4FF00] text-black font-semibold text-sm rounded-full hover:brightness-110 transition-all duration-300 hover:scale-[1.02] w-full sm:w-auto"
           >
             View work
             <ArrowUpRight className="w-4 h-4" />
@@ -141,7 +141,7 @@ export default function Hero() {
               e.preventDefault();
               document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/[0.1] text-white/70 font-medium text-sm hover:text-white hover:border-white/20 hover:bg-white/[0.03] transition-all duration-300 cursor-pointer"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-white/[0.1] text-white/70 font-medium text-sm hover:text-white hover:border-white/20 hover:bg-white/[0.03] transition-all duration-300 cursor-pointer w-full sm:w-auto"
           >
             Get in touch
           </a>

@@ -49,7 +49,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative z-10 py-24 md:py-32 px-6 sm:px-10 lg:px-10 overflow-hidden"
+      className="relative z-10 py-20 md:py-32 px-5 sm:px-10 lg:px-10 overflow-hidden"
       ref={ref}
     >
       {/* Ambient glow */}
@@ -73,7 +73,7 @@ export default function About() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="mb-10"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-white tracking-tight mb-3">
+          <h2 className="text-3xl sm:text-5xl font-bold text-white tracking-tight mb-3">
             Muhammad Anas
           </h2>
           <p className="text-base sm:text-lg font-medium text-[#D4FF00]/80">
@@ -86,7 +86,7 @@ export default function About() {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.15 }}
-          className="rounded-2xl bg-white/[0.02] border border-white/[0.06] p-8 relative overflow-hidden mb-5"
+          className="rounded-2xl bg-white/[0.02] border border-white/[0.06] p-5 sm:p-8 relative overflow-hidden mb-5"
         >
           {/* Top gradient line */}
           <div className="absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-[#D4FF00]/20 to-transparent" />
@@ -118,12 +118,12 @@ export default function About() {
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-5"
+          className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3 mb-5"
         >
           {services.map((service, i) => (
             <div
               key={i}
-              className="group/card rounded-xl bg-white/[0.02] border border-white/[0.05] p-5 hover:bg-white/[0.04] hover:border-[#D4FF00]/15 transition-all duration-500 relative overflow-hidden cursor-default"
+              className="group/card rounded-xl bg-white/[0.02] border border-white/[0.05] p-4 sm:p-5 hover:bg-white/[0.04] hover:border-[#D4FF00]/15 transition-all duration-500 relative overflow-hidden cursor-default"
             >
               {/* Hover gradient fill */}
               <div className="absolute inset-0 bg-gradient-to-br from-[#D4FF00]/[0.03] to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" />

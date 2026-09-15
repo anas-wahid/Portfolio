@@ -36,7 +36,7 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="relative z-10 py-24 md:py-32 px-6 sm:px-10 lg:px-16 overflow-hidden"
+      className="relative z-10 py-20 md:py-32 px-5 sm:px-10 lg:px-16 overflow-hidden"
       ref={ref}
     >
       <div className="max-w-4xl">
@@ -74,7 +74,7 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.6 }}
-              className="group rounded-2xl bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.1] hover:bg-white/[0.03] transition-all duration-500 p-6 sm:p-8"
+              className="group rounded-2xl bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.1] hover:bg-white/[0.03] transition-all duration-500 p-5 sm:p-8"
             >
               <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
                 <div className="flex items-center gap-3">

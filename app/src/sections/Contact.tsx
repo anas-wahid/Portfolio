@@ -54,7 +54,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative z-10 py-24 md:py-32 px-6 sm:px-10 lg:px-10 overflow-hidden scroll-mt-6"
+      className="relative z-10 py-20 md:py-32 px-5 sm:px-10 lg:px-10 overflow-hidden scroll-mt-6"
     >
       {/* Background ambient */}
       <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-[#D4FF00]/[0.02] rounded-full blur-[140px] pointer-events-none" />
@@ -79,24 +79,24 @@ export default function Contact() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="mb-14"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white leading-[1.05] mb-4">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight text-white leading-[1.05] mb-3 sm:mb-4">
             Let's Work{' '}
             <span className="text-[#D4FF00]">Together</span>.
           </h2>
-          <p className="text-base sm:text-lg text-white/40 font-light leading-relaxed max-w-lg">
+          <p className="text-sm sm:text-lg text-white/40 font-light leading-relaxed max-w-lg">
             Have a project in mind or just want to chat? Reach out through any channel below.
           </p>
         </motion.div>
 
         {/* Two equal columns side by side */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
           {/* LEFT Column — Details Card */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="rounded-3xl p-7 sm:p-8 bg-white/[0.02] border border-white/[0.06] flex flex-col justify-between"
+            className="rounded-2xl sm:rounded-3xl p-5 sm:p-8 bg-white/[0.02] border border-white/[0.06] flex flex-col justify-between"
           >
             <div className="space-y-6">
               {/* Email row */}
@@ -150,7 +150,7 @@ export default function Contact() {
             {/* Send a Message button */}
             <a
               href="mailto:annswahid@gmail.com"
-              className="mt-8 w-full py-3.5 px-5 bg-[#D4FF00] text-black font-bold text-sm rounded-full hover:brightness-110 transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2 shadow-[0_4px_25px_rgba(212,255,0,0.25)]"
+              className="mt-6 sm:mt-8 w-full py-3 sm:py-3.5 px-5 bg-[#D4FF00] text-black font-bold text-sm rounded-full hover:brightness-110 transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2 shadow-[0_4px_25px_rgba(212,255,0,0.25)]"
             >
               Send a Message
               <Send className="w-4 h-4" />
@@ -163,9 +163,9 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="rounded-3xl p-7 sm:p-8 bg-white/[0.02] border border-white/[0.06] flex flex-col justify-between"
+            className="rounded-2xl sm:rounded-3xl p-5 sm:p-8 bg-white/[0.02] border border-white/[0.06] flex flex-col justify-between"
           >
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-3 sm:gap-4">
               {socialLinks.map((link, i) => (
                 <motion.a
                   key={link.name}
@@ -176,9 +176,9 @@ export default function Contact() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: 0.35 + i * 0.08 }}
-                  className="group flex items-center gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-[#D4FF00]/30 hover:bg-white/[0.04] transition-all duration-300 cursor-pointer"
+                  className="group flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-[#D4FF00]/30 hover:bg-white/[0.04] transition-all duration-300 cursor-pointer"
                 >
-                  <div className="w-11 h-11 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-white/40 group-hover:text-[#D4FF00] group-hover:border-[#D4FF00]/30 transition-all duration-300 shrink-0">
+                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-white/40 group-hover:text-[#D4FF00] group-hover:border-[#D4FF00]/30 transition-all duration-300 shrink-0">
                     {link.icon}
                   </div>
                   <div className="flex-1 min-w-0">

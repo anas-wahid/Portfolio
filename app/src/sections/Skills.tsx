@@ -118,7 +118,7 @@ export default function Skills() {
     : skillsData.filter((s) => s.category === activeCategory);
 
   return (
-    <section id="skills" className="relative z-10 py-24 md:py-32 px-6 sm:px-10 lg:px-10" ref={ref}>
+    <section id="skills" className="relative z-10 py-20 md:py-32 px-5 sm:px-10 lg:px-10" ref={ref}>
       <div className="max-w-6xl">
         {/* Section Number */}
         <motion.span
@@ -150,17 +150,16 @@ export default function Skills() {
           initial={{ opacity: 0, y: 15 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex flex-wrap gap-2 mb-10"
+          className="flex flex-wrap gap-1.5 sm:gap-2 mb-8 sm:mb-10"
         >
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-2 rounded-full text-xs font-medium transition-all duration-300 cursor-pointer ${
-                activeCategory === cat
+              className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs font-medium transition-all duration-300 cursor-pointer ${activeCategory === cat
                   ? 'bg-[#D4FF00] text-black'
                   : 'bg-white/[0.04] text-white/40 border border-white/[0.06] hover:text-white/60 hover:bg-white/[0.06]'
-              }`}
+                }`}
             >
               {cat}
             </button>
@@ -168,7 +167,7 @@ export default function Skills() {
         </motion.div>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-3">
           {filteredSkills.map((skill, index) => {
             const Logo = skill.logo;
             return (

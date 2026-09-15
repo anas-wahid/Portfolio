@@ -155,7 +155,7 @@ export default function Sidebar({ onOpenCommandPalette }: SidebarProps) {
             </span>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="w-8 h-8 flex items-center justify-center rounded-lg bg-white/[0.05] text-white/60"
+              className="w-8 h-8 flex items-center justify-center rounded-lg bg-white/[0.05] text-white/60 cursor-pointer active:scale-95 transition-transform"
             >
               {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
             </button>

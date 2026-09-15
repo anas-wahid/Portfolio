@@ -14,7 +14,7 @@ export default function Home() {
   const [cmdPaletteOpen, setCmdPaletteOpen] = useState(false);
 
   return (
-    <div className="relative min-h-screen bg-[#0B0C0E]">
+    <div className="relative min-h-screen bg-[#0B0C0E] overflow-x-hidden">
       <CursorGlow />
       <Sidebar onOpenCommandPalette={() => setCmdPaletteOpen(true)} />
       <CommandPalette open={cmdPaletteOpen} onOpenChange={setCmdPaletteOpen} />

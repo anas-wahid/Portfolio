@@ -14,7 +14,7 @@ export default function Footer() {
   };
 
   return (
-    <footer id="footer" className="relative z-10 border-t border-white/[0.06] py-8 px-6 sm:px-10 lg:px-10">
+    <footer id="footer" className="relative z-10 border-t border-white/[0.06] py-6 sm:py-8 px-5 sm:px-10 lg:px-10">
       <div className="max-w-6xl">
         {/* Bottom bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
