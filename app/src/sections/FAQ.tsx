@@ -53,7 +53,7 @@ export default function FAQ() {
           transition={{ duration: 0.5 }}
           className="section-label block mb-8"
         >
-          <span className="text-[#D4FF00]">06</span> | FAQ
+          <span className="text-[#D4FF00]">05</span> | FAQ
         </motion.span>
 
         {/* Header */}
