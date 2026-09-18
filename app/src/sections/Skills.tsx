@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
 
 // SVG Logo components
 const JSLogo = () => (
@@ -91,6 +91,13 @@ const LLMLogo = () => (
   </svg>
 );
 
+const RestAPILogo = () => (
+  <svg viewBox="0 0 24 24" className="w-7 h-7">
+    <rect width="24" height="24" rx="5" fill="#10B981" fillOpacity="0.15" stroke="#10B981" strokeWidth="1.2" />
+    <text x="12" y="15.5" fill="#10B981" fontSize="7.5" fontWeight="800" textAnchor="middle" letterSpacing="0.5">REST</text>
+  </svg>
+);
+
 const categories = ['All', 'Languages', 'Frameworks', 'Tools', 'AI / ML'] as const;
 
 const skillsData = [
@@ -99,6 +106,7 @@ const skillsData = [
   { name: 'Python', note: 'Concurrency · Scripts', logo: PythonLogo, category: 'Languages' as const },
   { name: 'React', note: 'Hooks · State Management', logo: ReactLogo, category: 'Frameworks' as const },
   { name: 'Next.js', note: 'App Router · SSR / SSG', logo: NextLogo, category: 'Frameworks' as const },
+  { name: 'REST APIs', note: 'CRUD · Endpoints · Webhooks', logo: RestAPILogo, category: 'Tools' as const },
   { name: 'GraphQL', note: 'Schemas · Client / Server', logo: GraphQLLogo, category: 'Tools' as const },
   { name: 'SQL & Database', note: 'PostgreSQL · Queries', logo: SQLLogo, category: 'Tools' as const },
   { name: 'HTML & CSS', note: 'Flex & Grid Layouts', logo: HTMLLogo, category: 'Languages' as const },
@@ -152,45 +160,65 @@ export default function Skills() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="flex flex-wrap gap-1.5 sm:gap-2 mb-8 sm:mb-10"
         >
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs font-medium transition-all duration-300 cursor-pointer ${activeCategory === cat
-                  ? 'bg-[#D4FF00] text-black'
-                  : 'bg-white/[0.04] text-white/40 border border-white/[0.06] hover:text-white/60 hover:bg-white/[0.06]'
-                }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </motion.div>
-
-        {/* Skills Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-3">
-          {filteredSkills.map((skill, index) => {
-            const Logo = skill.logo;
+          {categories.map((cat) => {
+            const isActive = activeCategory === cat;
             return (
-              <motion.div
-                key={skill.name}
-                initial={{ opacity: 0, y: 15 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.15 + index * 0.03 }}
-                className="group relative rounded-xl p-4 bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.1] hover:bg-white/[0.04] transition-all duration-400 flex items-center gap-3.5 cursor-default"
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className="relative px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs font-medium cursor-pointer transition-colors duration-200 outline-none"
               >
-                <div className="shrink-0 group-hover:scale-110 transition-transform duration-400">
-                  <Logo />
-                </div>
-                <div className="min-w-0">
-                  <h4 className="text-sm font-semibold text-white">{skill.name}</h4>
-                  <p className="text-[11px] text-white/30 group-hover:text-white/45 transition-colors mt-0.5 truncate">
-                    {skill.note}
-                  </p>
-                </div>
-              </motion.div>
+                {isActive && (
+                  <motion.div
+                    layoutId="activeSkillTab"
+                    className="absolute inset-0 bg-[#D4FF00] rounded-full shadow-[0_0_15px_rgba(212,255,0,0.2)]"
+                    transition={{ type: 'spring', stiffness: 450, damping: 32 }}
+                  />
+                )}
+                {!isActive && (
+                  <div className="absolute inset-0 bg-white/[0.04] border border-white/[0.06] rounded-full hover:bg-white/[0.07] transition-colors" />
+                )}
+                <span
+                  className={`relative z-10 transition-colors duration-200 ${
+                    isActive ? 'text-black font-bold' : 'text-white/40 hover:text-white/70'
+                  }`}
+                >
+                  {cat}
+                </span>
+              </button>
             );
           })}
-        </div>
+        </motion.div>
+
+        {/* Skills Grid with Smooth Layout Transitions */}
+        <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-3">
+          <AnimatePresence mode="popLayout">
+            {filteredSkills.map((skill) => {
+              const Logo = skill.logo;
+              return (
+                <motion.div
+                  layout
+                  key={skill.name}
+                  initial={{ opacity: 0, scale: 0.94 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.94 }}
+                  transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                  className="group relative rounded-xl p-4 bg-white/[0.02] border border-white/[0.05] hover:border-white/[0.12] hover:bg-white/[0.04] transition-colors duration-200 flex items-center gap-3.5 cursor-default"
+                >
+                  <div className="shrink-0 group-hover:scale-110 transition-transform duration-200">
+                    <Logo />
+                  </div>
+                  <div className="min-w-0">
+                    <h4 className="text-sm font-semibold text-white">{skill.name}</h4>
+                    <p className="text-[11px] text-white/30 group-hover:text-white/50 transition-colors duration-200 mt-0.5 truncate">
+                      {skill.note}
+                    </p>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
+        </motion.div>
       </div>
     </section>
   );
