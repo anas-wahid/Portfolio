@@ -4,8 +4,6 @@ import { AnimatePresence } from 'framer-motion';
 
 interface BookingContextType {
   openBooking: () => void;
-  closeBooking: () => void;
-  isOpen: boolean;
 }
 
 const BookingContext = createContext<BookingContextType | undefined>(undefined);
@@ -17,7 +15,7 @@ export function BookingProvider({ children }: { children: React.ReactNode }) {
   const closeBooking = () => setIsOpen(false);
 
   return (
-    <BookingContext.Provider value={{ openBooking, closeBooking, isOpen }}>
+    <BookingContext.Provider value={{ openBooking }}>
       {children}
       <AnimatePresence>
         {isOpen && (
