@@ -54,6 +54,23 @@ const projects = [
     caseStudy: '#',
     visitSite: '#',
   },
+  {
+    title: 'HÉR Furniture — Client Project',
+    description:
+      'A bespoke, minimalist e-commerce platform built for a client. Features curated spaces, detailed product pages with variant selection, and a seamless shopping experience tailored for modern British furniture.',
+    categories: ['Client Project', 'E-Commerce', 'React'],
+    duration: '1 Month',
+    images: [
+      '/images/project-her-landing.jpg',
+      '/images/project-her-product.jpg',
+      '/images/project-her-curated.jpg',
+      '/images/project-her-products.jpg',
+      '/images/project-her-footer.jpg',
+    ],
+    tags: ['React', 'TypeScript', 'Tailwind CSS', 'Client Work'],
+    caseStudy: '#',
+    visitSite: '#',
+  },
   // {
   //   title: 'Nexus Commerce',
   //   description:
