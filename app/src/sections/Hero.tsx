@@ -1,4 +1,3 @@
-import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Sparkles, Trophy, Rocket, Star } from 'lucide-react';
 
@@ -11,32 +10,17 @@ const trustBadges = [
 ];
 
 export default function Hero() {
-  const heroRef = useRef<HTMLDivElement>(null);
-
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!heroRef.current) return;
-      const scrollY = window.scrollY;
-      const opacity = Math.max(0, 1 - scrollY / 900);
-      heroRef.current.style.opacity = String(opacity);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
     <section
       id="hero"
       className="relative min-h-screen flex flex-col justify-center overflow-hidden px-5 sm:px-10 lg:px-10 py-16 sm:py-20"
     >
-      <div ref={heroRef} className="relative z-10 max-w-6xl">
+      <div className="relative z-10 max-w-6xl">
         {/* Top metadata row */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
           className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 mb-8 sm:mb-10"
         >
           <span className="section-label">
@@ -57,9 +41,9 @@ export default function Hero() {
 
         {/* Main Heading */}
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
+          transition={{ duration: 0.45, delay: 0.05, ease: "easeInOut" }}
           className="text-[2rem] sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.08] sm:leading-[1.05] text-white mb-5 sm:mb-6 select-none"
         >
           Building Digital{' '}
@@ -69,9 +53,9 @@ export default function Hero() {
 
         {/* Subtitle */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.35 }}
+          transition={{ duration: 0.4, delay: 0.1, ease: "easeInOut" }}
           className="text-sm sm:text-lg text-white/45 font-light leading-relaxed max-w-2xl mb-6 sm:mb-8"
         >
           Full-stack developer crafting SaaS platforms, AI tools, interactive web experiences,
@@ -80,9 +64,9 @@ export default function Hero() {
 
         {/* Feature Bullets */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.45 }}
+          transition={{ duration: 0.4, delay: 0.15, ease: "easeInOut" }}
           className="flex flex-col gap-2.5 sm:gap-3 mb-8 sm:mb-10"
         >
           {[
@@ -101,9 +85,9 @@ export default function Hero() {
 
         {/* Trust Badges */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.55 }}
+          transition={{ duration: 0.4, delay: 0.2, ease: "easeInOut" }}
           className="flex flex-wrap gap-2 sm:gap-3 mb-8 sm:mb-10"
         >
           {trustBadges.map((badge, i) => (
@@ -118,19 +102,14 @@ export default function Hero() {
         </motion.div>
 
         {/* CTAs */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.65 }}
-          className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto"
-        >
+        <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
           <a
             href="#projects"
             onClick={(e) => {
               e.preventDefault();
               document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#D4FF00] text-black font-semibold text-sm rounded-full hover:brightness-110 transition-all duration-300 hover:scale-[1.02] w-full sm:w-auto"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#D4FF00] text-black font-semibold text-sm rounded-full hover:brightness-110 transition-all duration-200 ease-in-out hover:scale-[1.02] w-full sm:w-auto cursor-pointer"
           >
             View work
             <ArrowUpRight className="w-4 h-4" />
@@ -141,11 +120,11 @@ export default function Hero() {
               e.preventDefault();
               document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-white/[0.1] text-white/70 font-medium text-sm hover:text-white hover:border-white/20 hover:bg-white/[0.03] transition-all duration-300 cursor-pointer w-full sm:w-auto"
+            className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-white/[0.1] text-white/70 font-medium text-sm hover:text-white hover:border-white/20 hover:bg-white/[0.03] transition-all duration-200 ease-in-out cursor-pointer w-full sm:w-auto"
           >
             Get in touch
           </a>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
