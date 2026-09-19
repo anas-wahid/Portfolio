@@ -64,8 +64,8 @@ export default function Contact() {
         <motion.span
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
           className="section-label block mb-8"
         >
           <span className="text-[#D4FF00]">06</span> | Contact
@@ -73,10 +73,10 @@ export default function Contact() {
 
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.45, delay: 0.05, ease: "easeInOut" }}
           className="mb-14"
         >
           <h2 className="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight text-white leading-[1.05] mb-3 sm:mb-4">
@@ -92,10 +92,10 @@ export default function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
           {/* LEFT Column — Details Card */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.45, delay: 0.1, ease: "easeInOut" }}
             className="rounded-2xl sm:rounded-3xl p-5 sm:p-8 bg-white/[0.02] border border-white/[0.06] flex flex-col justify-between"
           >
             <div className="space-y-6">
@@ -114,7 +114,7 @@ export default function Contact() {
                 </div>
                 <button
                   onClick={handleCopyEmail}
-                  className="px-3 py-1.5 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] text-xs font-medium text-white/50 hover:text-white transition-all flex items-center gap-1.5 cursor-pointer shrink-0"
+                  className="px-3 py-1.5 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] text-xs font-medium text-white/50 hover:text-white transition-all duration-200 ease-in-out flex items-center gap-1.5 cursor-pointer shrink-0"
                 >
                   {copiedEmail ? (
                     <>
@@ -150,7 +150,7 @@ export default function Contact() {
             {/* Send a Message button */}
             <a
               href="mailto:annswahid@gmail.com"
-              className="mt-6 sm:mt-8 w-full py-3 sm:py-3.5 px-5 bg-[#D4FF00] text-black font-bold text-sm rounded-full hover:brightness-110 transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2 shadow-[0_4px_25px_rgba(212,255,0,0.25)]"
+              className="mt-6 sm:mt-8 w-full py-3 sm:py-3.5 px-5 bg-[#D4FF00] text-black font-bold text-sm rounded-full hover:brightness-110 transition-all duration-300 ease-in-out hover:scale-[1.02] flex items-center justify-center gap-2 shadow-[0_4px_25px_rgba(212,255,0,0.25)] cursor-pointer"
             >
               Send a Message
               <Send className="w-4 h-4" />
@@ -159,10 +159,10 @@ export default function Contact() {
 
           {/* RIGHT Column — Social Links Card */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.45, delay: 0.15, ease: "easeInOut" }}
             className="rounded-2xl sm:rounded-3xl p-5 sm:p-8 bg-white/[0.02] border border-white/[0.06] flex flex-col justify-between"
           >
             <div className="flex flex-col gap-3 sm:gap-4">
@@ -172,13 +172,13 @@ export default function Contact() {
                   href={link.url}
                   target="_blank"
                   rel="noreferrer"
-                  initial={{ opacity: 0, x: 15 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.35 + i * 0.08 }}
-                  className="group flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-[#D4FF00]/30 hover:bg-white/[0.04] transition-all duration-300 cursor-pointer"
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.15 }}
+                  transition={{ duration: 0.35, delay: 0.18 + i * 0.04, ease: "easeInOut" }}
+                  className="group flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white/[0.02] border border-white/[0.06] hover:border-[#D4FF00]/30 hover:bg-white/[0.04] transition-all duration-300 ease-in-out cursor-pointer"
                 >
-                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-white/40 group-hover:text-[#D4FF00] group-hover:border-[#D4FF00]/30 transition-all duration-300 shrink-0">
+                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-white/40 group-hover:text-[#D4FF00] group-hover:border-[#D4FF00]/30 transition-all duration-300 ease-in-out shrink-0">
                     {link.icon}
                   </div>
                   <div className="flex-1 min-w-0">
@@ -189,7 +189,7 @@ export default function Contact() {
                       {link.handle}
                     </span>
                   </div>
-                  <ArrowUpRight className="w-4.5 h-4.5 text-white/15 group-hover:text-[#D4FF00] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300 shrink-0" />
+                  <ArrowUpRight className="w-4.5 h-4.5 text-white/15 group-hover:text-[#D4FF00] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300 ease-in-out shrink-0" />
                 </motion.a>
               ))}
             </div>
