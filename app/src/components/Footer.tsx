@@ -1,8 +1,8 @@
 import { ArrowUp } from 'lucide-react';
 
 const socialLinks = [
-  { label: 'GitHub', href: '#' },
-  { label: 'LinkedIn', href: '#' },
+  { label: 'GitHub', href: 'https://github.com/anas-wahid' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/muhammad-anas-7a846427b/' },
   { label: 'Twitter / X', href: '#' },
 ];
 
