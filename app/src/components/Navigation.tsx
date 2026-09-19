@@ -139,7 +139,7 @@ export default function Navigation() {
                 {/* Middle Col: Socials & Auth */}
                 <div className="md:col-span-3 flex flex-col justify-between mt-8 md:mt-12">
                   <div className="flex flex-col gap-3">
-                    {['Instagram', 'Dribbble', 'LinkedIn'].map((social, i) => (
+                    {['LinkedIn', 'GitHub', 'Twitter / X'].map((social, i) => (
                       <motion.a
                         key={social}
                         href="#"

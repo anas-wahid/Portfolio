@@ -4,8 +4,6 @@ const socialLinks = [
   { label: 'GitHub', href: '#' },
   { label: 'LinkedIn', href: '#' },
   { label: 'Twitter / X', href: '#' },
-  { label: 'Instagram', href: '#' },
-  { label: 'Dribbble', href: '#' },
 ];
 
 export default function Footer() {
