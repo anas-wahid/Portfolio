@@ -1,10 +1,22 @@
 import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { ArrowUpRight, ExternalLink, ChevronRight, LayoutGrid, List } from 'lucide-react';
+import CaseStudyModal, { type CaseStudyData } from '@/components/CaseStudyModal';
 
 const filterTags = ['Featured', 'React', 'TypeScript', 'AI · ML', 'SaaS', 'Node.js', 'Next.js', 'E-Commerce', 'WebGL'];
 
-const projects = [
+interface Project {
+  title: string;
+  description: string;
+  categories: string[];
+  duration: string;
+  images: string[];
+  tags: string[];
+  caseStudy: CaseStudyData | null;
+  visitSite: string;
+}
+
+const projects: Project[] = [
   {
     title: 'Testo — AI Repo Analyzer',
     description:
@@ -17,9 +29,35 @@ const projects = [
       '/images/project-testo-projects.jpg',
       '/images/project-testo-history.jpg',
     ],
-    tags: ['React', 'TypeScript', 'AI', 'Node.js'],
-    caseStudy: 'https://ai-repo-analysis.vercel.app/',
+    tags: ['React', 'TypeScript', 'Node.js', 'OpenAI', 'Playwright', 'PostgreSQL'],
     visitSite: 'https://ai-repo-analysis.vercel.app/',
+    caseStudy: {
+      title: 'Testo — AI Repo Analyzer',
+      subtitle: 'AI-powered automated testing platform for GitHub repositories',
+      duration: '2 Months',
+      categories: ['AI · ML', 'SaaS'],
+      tags: ['React', 'TypeScript', 'Node.js', 'OpenAI', 'Playwright', 'PostgreSQL'],
+      overview:
+        'Testo is a SaaS platform that connects to a GitHub repository, reads the codebase, and automatically generates and executes a full browser-based test suite — all powered by LLMs. It eliminates the need for manual test writing and gives developers instant confidence in every push.',
+      problem:
+        'Developers waste hours writing and maintaining test suites. Most projects ship with little to no test coverage because testing is tedious, time-consuming, and often deprioritized in fast-moving teams.',
+      solution:
+        'I built an AI pipeline that reads a repo\'s structure, infers intent from the code, generates targeted test cases using OpenAI, and runs them in a real browser via Playwright — all in one click from a clean SaaS dashboard.',
+      results: [
+        { label: 'Test generation time', value: '<60s' },
+        { label: 'Manual effort saved', value: '~90%' },
+        { label: 'Repos analyzed', value: '100+' },
+        { label: 'Build time', value: '2 mo' },
+      ],
+      images: [
+        '/images/project-testo-landing.jpg',
+        '/images/project-testo-dashboard.jpg',
+        '/images/project-testo-projects.jpg',
+        '/images/project-testo-history.jpg',
+      ],
+      visitSite: 'https://ai-repo-analysis.vercel.app/',
+      liveUrl: 'https://ai-repo-analysis.vercel.app/',
+    },
   },
   {
     title: 'AdPilot — Ad Management Dashboard',
@@ -28,15 +66,40 @@ const projects = [
     categories: ['SaaS', 'React'],
     duration: '3 Months',
     images: [
-      // '/images/project-adpilot-campaigns.jpg',
       '/images/project-adpilot-landing.jpg',
       '/images/project-adpilot-dashboard.jpg',
       '/images/project-adpilot-orders.jpg',
       '/images/project-adpilot-commissions.jpg',
     ],
-    tags: ['React', 'TypeScript', 'Node.js', 'AI'],
-    caseStudy: 'https://admanagment.vercel.app/',
+    tags: ['React', 'TypeScript', 'Node.js', 'OpenAI', 'PostgreSQL', 'Chart.js'],
     visitSite: 'https://admanagment.vercel.app/',
+    caseStudy: {
+      title: 'AdPilot — Ad Management Dashboard',
+      subtitle: 'Full-featured SaaS for ad spend tracking and P&L reporting',
+      duration: '3 Months',
+      categories: ['SaaS', 'React'],
+      tags: ['React', 'TypeScript', 'Node.js', 'OpenAI', 'PostgreSQL', 'Chart.js'],
+      overview:
+        'AdPilot is a comprehensive ad management SaaS that helps e-commerce sellers track ad campaigns, extract orders from invoices using AI, calculate commissions, and generate real-time profit & loss reports — all in one unified dashboard.',
+      problem:
+        'E-commerce sellers running ads across multiple platforms had no single source of truth for profitability. They relied on spreadsheets, manual data entry, and guesswork to understand if their ad spend was actually profitable.',
+      solution:
+        'I built a multi-tenant SaaS with a clean dashboard UI, AI-powered invoice parsing for automatic order extraction, a commission tracker per product/SKU, and real-time P&L visualization — making profitability instantly visible.',
+      results: [
+        { label: 'Data entry automated', value: '~85%' },
+        { label: 'Reports generated', value: 'Real-time' },
+        { label: 'Platforms integrated', value: '3+' },
+        { label: 'Build time', value: '3 mo' },
+      ],
+      images: [
+        '/images/project-adpilot-landing.jpg',
+        '/images/project-adpilot-dashboard.jpg',
+        '/images/project-adpilot-orders.jpg',
+        '/images/project-adpilot-commissions.jpg',
+      ],
+      visitSite: 'https://admanagment.vercel.app/',
+      liveUrl: 'https://admanagment.vercel.app/',
+    },
   },
   {
     title: 'Self-Learning Agent — AI Memory Platform',
@@ -50,9 +113,34 @@ const projects = [
       '/images/project-sla-views.jpg',
       '/images/project-sla-testimonials.jpg',
     ],
-    tags: ['React', 'TypeScript', 'Python', 'AI'],
-    caseStudy: '#',
+    tags: ['React', 'TypeScript', 'Python', 'LangChain', 'LangGraph', 'OpenAI', 'PostgreSQL', 'Redis'],
     visitSite: '#',
+    caseStudy: {
+      title: 'Self-Learning Agent — AI Memory Platform',
+      subtitle: 'An AI that remembers you across every interaction',
+      duration: '4 Months',
+      categories: ['AI · ML', 'SaaS'],
+      tags: ['React', 'TypeScript', 'Python', 'LangChain', 'LangGraph', 'OpenAI', 'PostgreSQL', 'Redis'],
+      overview:
+        'The Self-Learning Agent is an AI-powered memory platform that continuously learns from your interactions, stores structured knowledge, and intelligently surfaces the right context when you need it most — acting as a personal second brain.',
+      problem:
+        'Most AI assistants start fresh every conversation with zero memory of who you are, what you\'ve discussed, or how you work. This creates friction and makes AI feel generic rather than genuinely useful for personal productivity.',
+      solution:
+        'I architected a multi-layer memory system using LangGraph for agent orchestration, vector embeddings for semantic recall, and a structured knowledge graph — allowing the agent to build, retrieve, and update long-term memory across sessions in real time.',
+      results: [
+        { label: 'Memory layers', value: '3-tier' },
+        { label: 'Recall accuracy', value: '~92%' },
+        { label: 'Context window', value: 'Unlimited' },
+        { label: 'Build time', value: '4 mo' },
+      ],
+      images: [
+        '/images/project-sla-landing.jpg',
+        '/images/project-sla-features.jpg',
+        '/images/project-sla-views.jpg',
+        '/images/project-sla-testimonials.jpg',
+      ],
+      visitSite: '#',
+    },
   },
   {
     title: 'HÉR Furniture — Client Project',
@@ -67,106 +155,36 @@ const projects = [
       '/images/project-her-products.jpg',
       '/images/project-her-footer.jpg',
     ],
-    tags: ['React', 'TypeScript', 'Tailwind CSS', 'Client Work'],
-    caseStudy: '#',
+    tags: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Shopify API'],
     visitSite: '#',
+    caseStudy: {
+      title: 'HÉR Furniture — Client Project',
+      subtitle: 'Bespoke minimalist e-commerce for a British furniture brand',
+      duration: '1 Month',
+      categories: ['Client Project', 'E-Commerce', 'React'],
+      tags: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Shopify API'],
+      overview:
+        'HÉR is a premium British furniture brand that needed a bespoke digital storefront to match their editorial aesthetic. I designed and built a fully custom e-commerce experience — from curated room inspirations to product detail pages with multi-variant selection and a seamless checkout.',
+      problem:
+        'The client\'s existing Shopify theme felt generic and disconnected from their high-end brand identity. They needed a frontend that felt as premium as their furniture — with editorial layouts, smooth animations, and an experience that told their brand story.',
+      solution:
+        'I built a fully custom React frontend connected to the Shopify Storefront API. The site features parallax hero sections, curated "spaces" editorial grid, animated product carousels, and a streamlined cart and checkout — all with a refined, minimal aesthetic.',
+      results: [
+        { label: 'Page load time', value: '<1.2s' },
+        { label: 'Mobile score', value: '97/100' },
+        { label: 'Delivered in', value: '1 month' },
+        { label: 'Client rating', value: '5 ★' },
+      ],
+      images: [
+        '/images/project-her-landing.jpg',
+        '/images/project-her-product.jpg',
+        '/images/project-her-curated.jpg',
+        '/images/project-her-products.jpg',
+        '/images/project-her-footer.jpg',
+      ],
+      visitSite: '#',
+    },
   },
-  // {
-  //   title: 'Nexus Commerce',
-  //   description:
-  //     'A full-featured e-commerce platform with real-time analytics, inventory management, and AI-powered product recommendations.',
-  //   categories: ['E-Commerce', 'SaaS'],
-  //   duration: '3 Months',
-  //   images: [
-  //     '/images/project-ecommerce.jpg',
-  //     '/images/project-ecommerce.jpg',
-  //     '/images/project-ecommerce.jpg',
-  //     '/images/project-ecommerce.jpg',
-  //   ],
-  //   tags: ['Next.js', 'TypeScript', 'Stripe', 'PostgreSQL'],
-  //   caseStudy: '#',
-  //   visitSite: '#',
-  // },
-  // {
-  //   title: 'AI Conversational Platform',
-  //   description:
-  //     'An intelligent chatbot framework with multi-model support, conversation memory, and custom agent builder interface.',
-  //   categories: ['AI · ML', 'SaaS'],
-  //   duration: '5 Months',
-  //   images: [
-  //     '/images/project-ai-chat.jpg',
-  //     '/images/project-ai-chat.jpg',
-  //     '/images/project-ai-chat.jpg',
-  //     '/images/project-ai-chat.jpg',
-  //   ],
-  //   tags: ['React', 'Python', 'OpenAI', 'WebSocket'],
-  //   caseStudy: '#',
-  //   visitSite: '#',
-  // },
-  // {
-  //   title: 'Immersive Portfolio Engine',
-  //   description:
-  //     'A 3D portfolio generator with particle effects, scroll-based animations, and WebGL-powered visual experiences.',
-  //   categories: ['WebGL', 'React'],
-  //   duration: '2 Months',
-  //   images: [
-  //     '/images/project-portfolio.jpg',
-  //     '/images/project-portfolio.jpg',
-  //     '/images/project-portfolio.jpg',
-  //     '/images/project-portfolio.jpg',
-  //   ],
-  //   tags: ['Three.js', 'GSAP', 'React', 'WebGL'],
-  //   caseStudy: '#',
-  //   visitSite: '#',
-  // },
-  // {
-  //   title: 'FitTrack Pro',
-  //   description:
-  //     'A comprehensive fitness tracking app with workout plans, nutrition logging, and progress visualization dashboards.',
-  //   categories: ['SaaS', 'React'],
-  //   duration: '4 Months',
-  //   images: [
-  //     '/images/project-fitness.jpg',
-  //     '/images/project-fitness.jpg',
-  //     '/images/project-fitness.jpg',
-  //     '/images/project-fitness.jpg',
-  //   ],
-  //   tags: ['React Native', 'Firebase', 'Chart.js', 'Node.js'],
-  //   caseStudy: '#',
-  //   visitSite: '#',
-  // },
-  // {
-  //   title: 'DataVision Analytics',
-  //   description:
-  //     'Enterprise-grade analytics dashboard with real-time data streams, customizable widgets, and collaborative features.',
-  //   categories: ['SaaS', 'TypeScript'],
-  //   duration: '6 Months',
-  //   images: [
-  //     '/images/project-analytics.jpg',
-  //     '/images/project-analytics.jpg',
-  //     '/images/project-analytics.jpg',
-  //     '/images/project-analytics.jpg',
-  //   ],
-  //   tags: ['Vue.js', 'D3.js', 'GraphQL', 'AWS'],
-  //   caseStudy: '#',
-  //   visitSite: '#',
-  // },
-  // {
-  //   title: 'SocialSync Manager',
-  //   description:
-  //     'A social media management tool with content scheduling, engagement analytics, and multi-platform publishing.',
-  //   categories: ['SaaS', 'Next.js'],
-  //   duration: '3 Months',
-  //   images: [
-  //     '/images/project-social.jpg',
-  //     '/images/project-social.jpg',
-  //     '/images/project-social.jpg',
-  //     '/images/project-social.jpg',
-  //   ],
-  //   tags: ['Next.js', 'tRPC', 'Tailwind', 'Redis'],
-  //   caseStudy: '#',
-  //   visitSite: '#',
-  // },
 ];
 
 function ImageCarousel({ images }: { images: string[]; projectIndex: number }) {
@@ -230,6 +248,7 @@ export default function Projects() {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [viewMode, setViewMode] = useState<'carousel' | 'list'>('carousel');
   const [activeFilter, setActiveFilter] = useState('Featured');
+  const [activeCaseStudy, setActiveCaseStudy] = useState<CaseStudyData | null>(null);
 
   return (
     <section id="projects" className="relative z-10 py-20 md:py-32 px-5 sm:px-10 lg:px-10" ref={ref}>
@@ -355,24 +374,32 @@ export default function Projects() {
 
                 {/* Right: Action Buttons */}
                 <div className="flex flex-row gap-2 sm:gap-2.5 shrink-0 lg:pt-8">
-                  <a
-                    href={project.caseStudy}
-                    {...(project.caseStudy !== '#' ? { target: '_blank', rel: 'noreferrer' } : {})}
-                    onClick={project.caseStudy === '#' ? (e) => e.preventDefault() : undefined}
-                    className="inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/[0.06] border border-white/[0.08] text-white text-xs sm:text-sm font-medium hover:bg-white/[0.1] hover:border-white/[0.15] transition-all duration-300"
+                  {/* Case Study button — always shown, opens modal */}
+                  <button
+                    onClick={() => project.caseStudy && setActiveCaseStudy(project.caseStudy)}
+                    className="inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/[0.06] border border-white/[0.08] text-white text-xs sm:text-sm font-medium hover:bg-white/[0.1] hover:border-white/[0.15] transition-all duration-300 cursor-pointer"
                   >
                     Case study
                     <ArrowUpRight className="w-3.5 h-3.5" />
-                  </a>
-                  <a
-                    href={project.visitSite}
-                    {...(project.visitSite !== '#' ? { target: '_blank', rel: 'noreferrer' } : {})}
-                    onClick={project.visitSite === '#' ? (e) => e.preventDefault() : undefined}
-                    className="inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/[0.06] border border-white/[0.08] text-white text-xs sm:text-sm font-medium hover:bg-white/[0.1] hover:border-white/[0.15] transition-all duration-300"
-                  >
-                    Visit site
-                    <ExternalLink className="w-3.5 h-3.5" />
-                  </a>
+                  </button>
+
+                  {/* Visit Site button */}
+                  {project.visitSite !== '#' ? (
+                    <a
+                      href={project.visitSite}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/[0.06] border border-white/[0.08] text-white text-xs sm:text-sm font-medium hover:bg-white/[0.1] hover:border-white/[0.15] transition-all duration-300"
+                    >
+                      Visit site
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </a>
+                  ) : (
+                    <span className="inline-flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/[0.03] border border-white/[0.05] text-white/25 text-xs sm:text-sm font-medium cursor-default">
+                      Visit site
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </span>
+                  )}
                 </div>
               </div>
 
@@ -416,6 +443,12 @@ export default function Projects() {
           </a>
         </motion.div>
       </div>
+
+      {/* Case Study Modal */}
+      <CaseStudyModal
+        data={activeCaseStudy}
+        onClose={() => setActiveCaseStudy(null)}
+      />
     </section>
   );
 }

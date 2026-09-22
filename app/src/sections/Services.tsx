@@ -36,7 +36,7 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="relative z-10 py-20 md:py-32 px-5 sm:px-10 lg:px-16 overflow-hidden"
+      className="relative z-10 py-20 md:py-32 px-5 sm:px-10 lg:px-10 overflow-hidden"
       ref={ref}
     >
       <div className="max-w-4xl">
