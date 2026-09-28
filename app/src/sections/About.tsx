@@ -100,7 +100,7 @@ export default function About() {
             </span>
             <span className="pl-5">
               I&apos;m a Full-Stack Developer with{' '}
-              <span className="text-white font-medium">3+ years</span> of
+              <span className="text-white font-medium">1+ years</span> of
               hands-on experience building modern web applications and{' '}
               <span className="text-[#D4FF00]/80 font-medium">
                 AI-powered solutions
