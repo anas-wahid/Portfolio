@@ -61,7 +61,7 @@ export default function Skills() {
           initial={{ opacity: 0, y: 25 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="rounded-2xl border border-white/[0.08] bg-white/[0.015] backdrop-blur-sm overflow-hidden"
+          className="rounded-2xl border border-white/[0.08] bg-white/[0.015] md:backdrop-blur-sm overflow-hidden"
         >
           <div className="grid grid-cols-1 md:grid-cols-2">
             {stackCategories.map((category, index) => {

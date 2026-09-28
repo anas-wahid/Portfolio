@@ -235,7 +235,7 @@ function ImageCarousel({ images }: { images: string[]; projectIndex: number }) {
       {/* Scroll right button */}
       <button
         onClick={scrollRight}
-        className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/[0.1] flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 hover:bg-white/20 cursor-pointer z-10"
+        className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 md:backdrop-blur-md border border-white/[0.1] flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 hover:bg-white/20 cursor-pointer z-10"
       >
         <ChevronRight className="w-5 h-5 text-white" />
       </button>

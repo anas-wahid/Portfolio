@@ -53,8 +53,11 @@ export default function About() {
       ref={ref}
     >
       {/* Ambient glow */}
-      <div className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#D4FF00]/[0.02] rounded-full blur-[120px] pointer-events-none" />
-
+      {/* Ambient glow */}
+      <div
+        className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
+        style={{ background: 'radial-gradient(circle, rgba(212,255,0,0.035) 0%, transparent 70%)' }}
+      />
       <div className="max-w-6xl">
         {/* Section label */}
         <motion.span

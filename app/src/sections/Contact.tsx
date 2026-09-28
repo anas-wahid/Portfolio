@@ -57,8 +57,10 @@ export default function Contact() {
       className="relative z-10 py-20 md:py-32 px-5 sm:px-10 lg:px-10 overflow-hidden scroll-mt-6"
     >
       {/* Background ambient */}
-      <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-[#D4FF00]/[0.02] rounded-full blur-[140px] pointer-events-none" />
-
+      <div
+        className="absolute top-1/3 right-1/4 w-[500px] h-[500px] rounded-full pointer-events-none"
+        style={{ background: 'radial-gradient(circle, rgba(212,255,0,0.035) 0%, transparent 70%)' }}
+      />
       <div className="max-w-6xl">
         {/* Section Label */}
         <motion.span
